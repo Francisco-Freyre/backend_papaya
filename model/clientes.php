@@ -93,5 +93,10 @@ class clientes{
             return $response;
         }
     }
+
+    public function insertToken($clienteid, $token){
+        $sql = "INSERT INTO usuarios_token VALUES(NULL, '$clienteid', '$token', 'Activo', CURTIME());";
+        return $save = $this->db->query($sql);
+    }
 }
 ?>
