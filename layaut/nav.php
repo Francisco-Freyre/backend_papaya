@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-
+  <link rel="stylesheet" href="assets/dist/css/miCss.css">
   <style>
     [class*=sidebar-dark-] {
       background-color: #59cdc4;
