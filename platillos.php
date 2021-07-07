@@ -15,7 +15,7 @@ $platillos = $_platillos->getPlatillos();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lista de clientes</h1>
+            <h1>Lista de platillos</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -66,7 +66,7 @@ $platillos = $_platillos->getPlatillos();
     <?php else: ?>
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2>Aun no tienes clientes registrados</h2>
+            <h2>Aun no tienes platillos guardados</h2>
           </div>
         </div>
     <?php endif;?>

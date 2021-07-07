@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2021 a las 17:04:26
+-- Tiempo de generación: 01-07-2021 a las 16:28:30
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -45,17 +45,29 @@ CREATE TABLE `alergias` (
   `alimento` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `alergias`
+-- Estructura de tabla para la tabla `aporte_nutricional`
 --
 
-INSERT INTO `alergias` (`id`, `alimento`) VALUES
-(1, 'Proteína de leche / Lactosa'),
-(2, 'Mariscos'),
-(3, 'Carne de cerdo'),
-(4, 'Proteínas de huevo'),
-(5, 'Gluten(trigo)'),
-(6, 'Semillas o nueces');
+CREATE TABLE `aporte_nutricional` (
+  `id` int(11) NOT NULL,
+  `platillo_id` int(11) NOT NULL,
+  `energia` varchar(255) NOT NULL,
+  `proteinas` varchar(255) NOT NULL,
+  `carbohidratos` varchar(255) NOT NULL,
+  `grasas` varchar(255) NOT NULL,
+  `sodio` varchar(255) NOT NULL,
+  `potasio` varchar(255) NOT NULL,
+  `calcio` varchar(255) NOT NULL,
+  `hierro` varchar(255) NOT NULL,
+  `vitamina_a` varchar(255) NOT NULL,
+  `vitamina_e` varchar(255) NOT NULL,
+  `vitamina_d` varchar(255) NOT NULL,
+  `vitamina_c` varchar(255) NOT NULL,
+  `acido_folico` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -73,14 +85,6 @@ CREATE TABLE `clientes` (
   `password` varchar(255) NOT NULL,
   `url_img` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `edad`, `sexo`, `email`, `password`, `url_img`) VALUES
-(6, 'Francisco Alberto', 'Freyre Vazquez', 25, 'Hombre', 'fockqoo@gmail.com', '$2y$12$oNtiwvSzxP2LJkHYcO3lv.CU/eDj6de11yunk2OzLd27SSsQD1/Be', 'uploads/perfil/user1-128x128.jpg'),
-(7, 'Jacky', 'Alanis Herrera', 24, 'Mujer', 'jacky@bithives.com', '$2y$12$necjNt/W.NaxbYJZMoMa0u1DZc1p07pSXNI/0NhxU4H1kvfhXeYwy', 'uploads/perfil/user1-128x128.jpg');
 
 -- --------------------------------------------------------
 
@@ -165,21 +169,6 @@ CREATE TABLE `excluido` (
   `alimento` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `excluido`
---
-
-INSERT INTO `excluido` (`id`, `alimento`) VALUES
-(1, 'Leche'),
-(2, 'Carne de cerdo'),
-(3, 'Carne de res'),
-(4, 'Productos de soya'),
-(5, 'Aves de corral'),
-(6, 'Huevos'),
-(7, 'Pescado'),
-(8, 'Queso'),
-(9, 'Mariscos');
-
 -- --------------------------------------------------------
 
 --
@@ -197,12 +186,17 @@ CREATE TABLE `formularios` (
   `comida_grande` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `formularios`
+-- Estructura de tabla para la tabla `ingredientes`
 --
 
-INSERT INTO `formularios` (`id`, `id_cliente`, `altura`, `peso`, `meta`, `actividad_fisica`, `vasos_bebidas`, `comida_grande`) VALUES
-(1, 6, 1.86, 130.00, 'bajar', '10 min de actividad', '5 - 6', 'Desayuno');
+CREATE TABLE `ingredientes` (
+  `id` int(11) NOT NULL,
+  `platillo_id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -218,19 +212,20 @@ CREATE TABLE `pesos` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `pesos`
+-- Estructura de tabla para la tabla `platillos`
 --
 
-INSERT INTO `pesos` (`id`, `id_cliente`, `peso`, `tipo`, `fecha`) VALUES
-(1, 6, '130.00', 'inicial', '2021-01-01'),
-(2, 6, '90.00', 'meta', '2021-01-01'),
-(3, 6, '128.50', 'continuo', '2021-01-16'),
-(4, 6, '126.20', 'continuo', '2021-01-31'),
-(5, 6, '123.00', 'continuo', '2021-02-18'),
-(6, 6, '115.00', 'continuo', '2021-04-01'),
-(7, 6, '105.00', 'continuo', '2021-04-22'),
-(11, 6, '90.00', 'continuo', '2021-05-10');
+CREATE TABLE `platillos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `procedimiento` text NOT NULL,
+  `tiempo_elaboracion` varchar(30) NOT NULL,
+  `energia` varchar(50) NOT NULL,
+  `url_img` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -243,13 +238,19 @@ CREATE TABLE `sexo` (
   `sexo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `sexo`
+-- Estructura de tabla para la tabla `usuarios_token`
 --
 
-INSERT INTO `sexo` (`id`, `sexo`) VALUES
-(1, 'Hombre'),
-(2, 'Mujer');
+CREATE TABLE `usuarios_token` (
+  `id` int(11) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  `token` varchar(200) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `fecha` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
@@ -266,6 +267,13 @@ ALTER TABLE `administradores`
 --
 ALTER TABLE `alergias`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `aporte_nutricional`
+--
+ALTER TABLE `aporte_nutricional`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `platillo_id` (`platillo_id`);
 
 --
 -- Indices de la tabla `clientes`
@@ -294,6 +302,13 @@ ALTER TABLE `formularios`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
+-- Indices de la tabla `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `platillo_id` (`platillo_id`);
+
+--
 -- Indices de la tabla `pesos`
 --
 ALTER TABLE `pesos`
@@ -301,9 +316,21 @@ ALTER TABLE `pesos`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
+-- Indices de la tabla `platillos`
+--
+ALTER TABLE `platillos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `sexo`
 --
 ALTER TABLE `sexo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios_token`
+--
+ALTER TABLE `usuarios_token`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -320,13 +347,19 @@ ALTER TABLE `administradores`
 -- AUTO_INCREMENT de la tabla `alergias`
 --
 ALTER TABLE `alergias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `aporte_nutricional`
+--
+ALTER TABLE `aporte_nutricional`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dietas`
@@ -338,35 +371,65 @@ ALTER TABLE `dietas`
 -- AUTO_INCREMENT de la tabla `excluido`
 --
 ALTER TABLE `excluido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `formularios`
 --
 ALTER TABLE `formularios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pesos`
 --
 ALTER TABLE `pesos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `platillos`
+--
+ALTER TABLE `platillos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sexo`
 --
 ALTER TABLE `sexo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios_token`
+--
+ALTER TABLE `usuarios_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `aporte_nutricional`
+--
+ALTER TABLE `aporte_nutricional`
+  ADD CONSTRAINT `aporte_nutricional_ibfk_1` FOREIGN KEY (`platillo_id`) REFERENCES `platillos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `formularios`
 --
 ALTER TABLE `formularios`
   ADD CONSTRAINT `formularios_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  ADD CONSTRAINT `ingredientes_ibfk_1` FOREIGN KEY (`platillo_id`) REFERENCES `platillos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `pesos`
