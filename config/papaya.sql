@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2021 a las 16:28:30
+-- Tiempo de generación: 14-07-2021 a las 00:20:15
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -43,30 +43,6 @@ CREATE TABLE `administradores` (
 CREATE TABLE `alergias` (
   `id` int(11) NOT NULL,
   `alimento` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `aporte_nutricional`
---
-
-CREATE TABLE `aporte_nutricional` (
-  `id` int(11) NOT NULL,
-  `platillo_id` int(11) NOT NULL,
-  `energia` varchar(255) NOT NULL,
-  `proteinas` varchar(255) NOT NULL,
-  `carbohidratos` varchar(255) NOT NULL,
-  `grasas` varchar(255) NOT NULL,
-  `sodio` varchar(255) NOT NULL,
-  `potasio` varchar(255) NOT NULL,
-  `calcio` varchar(255) NOT NULL,
-  `hierro` varchar(255) NOT NULL,
-  `vitamina_a` varchar(255) NOT NULL,
-  `vitamina_e` varchar(255) NOT NULL,
-  `vitamina_d` varchar(255) NOT NULL,
-  `vitamina_c` varchar(255) NOT NULL,
-  `acido_folico` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -166,6 +142,7 @@ CREATE TABLE `dietas` (
 
 CREATE TABLE `excluido` (
   `id` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
   `alimento` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -224,6 +201,9 @@ CREATE TABLE `platillos` (
   `procedimiento` text NOT NULL,
   `tiempo_elaboracion` varchar(30) NOT NULL,
   `energia` varchar(50) NOT NULL,
+  `proteina` varchar(255) NOT NULL,
+  `carbohidratos` varchar(255) NOT NULL,
+  `grasas` varchar(255) NOT NULL,
   `url_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -267,13 +247,6 @@ ALTER TABLE `administradores`
 --
 ALTER TABLE `alergias`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `aporte_nutricional`
---
-ALTER TABLE `aporte_nutricional`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `platillo_id` (`platillo_id`);
 
 --
 -- Indices de la tabla `clientes`
@@ -350,12 +323,6 @@ ALTER TABLE `alergias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `aporte_nutricional`
---
-ALTER TABLE `aporte_nutricional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
@@ -412,12 +379,6 @@ ALTER TABLE `usuarios_token`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `aporte_nutricional`
---
-ALTER TABLE `aporte_nutricional`
-  ADD CONSTRAINT `aporte_nutricional_ibfk_1` FOREIGN KEY (`platillo_id`) REFERENCES `platillos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `formularios`

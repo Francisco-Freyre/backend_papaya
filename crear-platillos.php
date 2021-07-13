@@ -43,10 +43,6 @@ require_once 'layaut/sidebar.php';
                     <label for="elaboracion">Tiempo de Elaboracion</label>
                     <input type="text" class="form-control" name="elaboracion" placeholder="elaboracion" required>
                   </div>
-                  <div class="form-group">
-                    <label for="energia">Energia</label>
-                    <input type="text" class="form-control" name="energia" placeholder="Energia" required>
-                  </div>
                   <div class="form-group"><label for="">Imagen del platillo</label></div>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile" name="img">
@@ -74,42 +70,6 @@ require_once 'layaut/sidebar.php';
                   <div class="form-group">
                     <label for="grasas">Grasas</label>
                     <input type="text" class="form-control" name="grasas" placeholder="Grasas" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="sodio">Sodio</label>
-                    <input type="text" class="form-control" name="sodio" placeholder="Sodio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="potasio">Potasio</label>
-                    <input type="text" class="form-control" name="potasio" placeholder="Potasio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="calcio">Calcio</label>
-                    <input type="text" class="form-control" name="calcio" placeholder="Calcio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="hierro">Hierro</label>
-                    <input type="text" class="form-control" name="hierro" placeholder="Hierro" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_a">Vitamina A</label>
-                    <input type="text" class="form-control" name="vitamina_a" placeholder="Vitamina A" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_c">Vitamina C</label>
-                    <input type="text" class="form-control" name="vitamina_c" placeholder="Vitamina C" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_d">Vitamina D</label>
-                    <input type="text" class="form-control" name="vitamina_d" placeholder="Vitamina D" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_e">Vitamina E</label>
-                    <input type="text" class="form-control" name="vitamina_e" placeholder="Vitamina E" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="acido_folico">Acido Folico</label>
-                    <input type="text" class="form-control" name="acido_folico" placeholder="Acido Folico" required>
                   </div>
                 </div>
                 <!-- /.card-body -->

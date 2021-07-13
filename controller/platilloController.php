@@ -18,21 +18,15 @@ if(isset($_POST)){
                 move_uploaded_file($file['tmp_name'], '../uploads/platillos/'.$filename);
                 $url_img = 'uploads/platillos/'.$filename;
             }
-            $id = $_platillos->create($_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energia'], $url_img);
+            $id = $_platillos->create($_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $url_img);
             if($id != false){
-                $save = $_platillos->create_aporte($id, $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $_POST['sodio'], $_POST['potasio'], $_POST['calcio'], $_POST['hierro'], $_POST['vitamina_a'], $_POST['vitamina_e'], $_POST['vitamina_d'], $_POST['vitamina_c'], $_POST['acido_folico']);
-                if($save){
-                    echo "<script>";
-                    echo "alert('Platillo creado correctamente, agrega los ingredientes y habras terminado');";
-                    echo "window.location.replace('../ingredientes.php?id=$id');";
-                    echo "</script>";
-                }
-                else{
-                    echo 'Fallo';
-                }
+                echo "<script>";
+                echo "alert('Platillo creado correctamente, agrega los ingredientes y habras terminado');";
+                echo "window.location.replace('../ingredientes.php?id=$id');";
+                echo "</script>";
             }
             else{
-                echo $id;
+                echo 'Fallo';
             }
         }
 
@@ -67,23 +61,20 @@ if(isset($_POST)){
                     move_uploaded_file($file['tmp_name'], '../uploads/platillos/'.$filename);
                     $url_img = 'uploads/platillos/'.$filename;
                 }
-                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energia'], $url_img);
+                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $url_img);
             }
             else{
-                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energia'], '');
+                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], '');
             }
             
             if($edit){
-                $aporte = $_platillos->editarAporte($_POST['id'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $_POST['sodio'], $_POST['potasio'], $_POST['calcio'], $_POST['hierro'], $_POST['vitamina_a'], $_POST['vitamina_e'], $_POST['vitamina_c'], $_POST['vitamina_d'], $_POST['acido_folico']);
-                if($aporte){
-                    echo "<script>";
-                    echo "alert('Platillo editado correctamente');";
-                    echo "window.location.replace('../platillos.php');";
-                    echo "</script>";
-                }
+                echo "<script>";
+                echo "alert('Platillo editado correctamente');";
+                echo "window.location.replace('../platillos.php');";
+                echo "</script>";
             }
             else{
-                echo 'algo fallo, intente de nuevo';
+                echo 'Algo fallo, intente de nuevo';
             }
         }
     }
@@ -91,6 +82,7 @@ if(isset($_POST)){
 
 if(isset($_GET)){
     if(isset($_GET['accion'])){
+        //Funcion mal nombrada, usada para borrar ingredientes, no platillos
         if($_GET['accion'] == 'borrar-platillo'){
             $delete = $_platillos->delete_platillo($_GET['id']);
             if($delete){
@@ -107,6 +99,7 @@ if(isset($_GET)){
             }
         }
 
+        //Borramos platillos
         if($_GET['accion'] == 'borrar-platillos'){
             $delete = $_platillos->deletePlatillo($_GET['id']);
             if($delete){

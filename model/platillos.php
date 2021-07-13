@@ -6,8 +6,8 @@ class platillos {
         $this->db = Database::connect();
     }
 
-    public function create($nombre, $procedimiento, $elaboracion, $energia, $url_img){
-        $sql = "INSERT INTO platillos VALUES(NULL, '$nombre', '$procedimiento', '$elaboracion', '$energia', '$url_img');";
+    public function create($nombre, $procedimiento, $elaboracion, $energia, $proteinas, $carbo, $grasas, $url_img){
+        $sql = "INSERT INTO platillos VALUES(NULL, '$nombre', '$procedimiento', '$elaboracion', '$energia', '$proteinas', '$carbo', '$grasas', '$url_img');";
         $save = $this->db->query($sql);
         if($save){
             return $this->db->insert_id;
@@ -35,7 +35,7 @@ class platillos {
             return $save;
         }
     }
-
+    //Funcion mal nombrada, borra ingredientes, no platillos
     public function delete_platillo($id){
         $sql = "DELETE FROM ingredientes WHERE id = $id";
         $response = $this->db->query($sql);
@@ -90,18 +90,19 @@ class platillos {
         }
     }
 
+    //Funcion para borrar platillos
     public function deletePlatillo($id){
         $sql = "DELETE FROM platillos WHERE id = $id";
         $response = $this->db->query($sql);
         return $response;
     }
 
-    public function editPlatillo($id, $nombre, $proce, $elabo, $energia, $img){
+    public function editPlatillo($id, $nombre, $proce, $elabo, $energia, $prote, $carbo, $grasa, $img){
         if($img != ""){
-            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia', url_img = '$img' WHERE id = $id";
+            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa', url_img = '$img' WHERE id = $id";
         }
         else{
-            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia' WHERE id = $id";
+            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa' WHERE id = $id";
         }
 
         $response = $this->db->query($sql);

@@ -7,6 +7,7 @@ $_formularios = new formularios();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $_POST = json_decode(file_get_contents('php://input'), true);
+        // Funciona correcto en local
         if(isset($_POST['meta'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
             if(is_object($formulario)){
@@ -38,6 +39,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
+        //Funciona en local
         if(isset($_POST['actividad'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
             if(is_object($formulario)){
@@ -69,10 +71,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
+        //Aun no esta listo
         if(isset($_POST['excluido'])){
 
         }
 
+        //Funciona en local
         if(isset($_POST['peso']) && isset($_POST['estatura'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
             if(is_object($formulario)){

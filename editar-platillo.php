@@ -8,8 +8,6 @@ $_platillos = new platillos();
 $platillos = $_platillos->getPlatillo($_GET['id']);
 if($platillos && $platillos->num_rows == 1){
     $platillo = $platillos->fetch_object();
-    $aportes = $_platillos->getAporte($platillo->id);
-    $aporte = $aportes->fetch_object();
     $ingredientes = $_platillos->getIngredientes($platillo->id);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -52,10 +50,6 @@ if($platillos && $platillos->num_rows == 1){
                     <label for="elaboracion">Tiempo de Elaboracion</label>
                     <input type="text" class="form-control" name="elaboracion" value="<?=$platillo->tiempo_elaboracion?>" placeholder="elaboracion" required>
                   </div>
-                  <div class="form-group">
-                    <label for="energia">Energia</label>
-                    <input type="text" class="form-control" name="energia" value="<?=$platillo->energia?>" placeholder="Energia" required>
-                  </div>
                   <div class="form-group"><label for="">Imagen del platillo</label></div>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile" name="img">
@@ -70,55 +64,19 @@ if($platillos && $platillos->num_rows == 1){
                   </div>
                   <div class="form-group">
                     <label for="energianutri">Energia</label>
-                    <input type="text" class="form-control" name="energianutri" value="<?=$aporte->energia?>" placeholder="Energia" required>
+                    <input type="text" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
                   </div>
                   <div class="form-group">
                     <label for="proteina">Proteina</label>
-                    <input type="text" class="form-control" name="proteina" value="<?=$aporte->proteinas?>" placeholder="Proteina" required>
+                    <input type="text" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
                   </div>
                   <div class="form-group">
                     <label for="carbohidratos">Carbohidratos</label>
-                    <input type="text" class="form-control" name="carbohidratos" value="<?=$aporte->carbohidratos?>" placeholder="Carbohidratos" required>
+                    <input type="text" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
                   </div>
                   <div class="form-group">
                     <label for="grasas">Grasas</label>
-                    <input type="text" class="form-control" name="grasas" value="<?=$aporte->grasas?>" placeholder="Grasas" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="sodio">Sodio</label>
-                    <input type="text" class="form-control" name="sodio" value="<?=$aporte->sodio?>" placeholder="Sodio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="potasio">Potasio</label>
-                    <input type="text" class="form-control" name="potasio" value="<?=$aporte->potasio?>" placeholder="Potasio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="calcio">Calcio</label>
-                    <input type="text" class="form-control" name="calcio" value="<?=$aporte->calcio?>" placeholder="Calcio" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="hierro">Hierro</label>
-                    <input type="text" class="form-control" name="hierro" value="<?=$aporte->hierro?>" placeholder="Hierro" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_a">Vitamina A</label>
-                    <input type="text" class="form-control" name="vitamina_a" value="<?=$aporte->vitamina_a?>" placeholder="Vitamina A" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_c">Vitamina C</label>
-                    <input type="text" class="form-control" name="vitamina_c" value="<?=$aporte->vitamina_c?>" placeholder="Vitamina C" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_d">Vitamina D</label>
-                    <input type="text" class="form-control" name="vitamina_d" value="<?=$aporte->vitamina_d?>" placeholder="Vitamina D" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="vitamina_e">Vitamina E</label>
-                    <input type="text" class="form-control" name="vitamina_e" value="<?=$aporte->vitamina_e?>" placeholder="Vitamina E" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="acido_folico">Acido Folico</label>
-                    <input type="text" class="form-control" name="acido_folico" value="<?=$aporte->acido_folico?>" placeholder="Acido Folico" required>
+                    <input type="text" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
                   </div>
                   <div class="form-group">
                     <label for="nombre">Ingredientes</label>
