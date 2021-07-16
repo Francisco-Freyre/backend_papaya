@@ -51,7 +51,39 @@ class formularios{
     public function insertExcluidos($id_cliente, $alimento){
         $sql = "INSERT INTO excluido VALUES(NULL, $id_cliente ,'$alimento');";
         $response = $this->db->query($sql);
-        return $response;
+        if($response){
+            if($this->db->affected_rows > 0){
+                return $this->db->affected_rows;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return $response;
+        }
+    }
+
+    public function getExcluidos($id_cliente){
+        $sql = "SELECT * FROM excluido WHERE id_cliente = $id_cliente";
+        $response = $this->db->query($sql);
+
+        if($response){
+            if($response->num_rows > 0){
+                return $response->num_rows;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return $response;
+        }
+    }
+
+    public function deleteExcluidos($id_cliente){
+        $sql = "DELETE FROM excluido WHERE id_cliente = $id_cliente";
+        return $response = $this->db->query($sql);
     }
 
     public function InsertFechaEstatura($id_cliente, $estatura, $peso){
@@ -64,6 +96,59 @@ class formularios{
         $sql = "UPDATE formularios SET altura = '$estatura', peso = '$peso' WHERE id_cliente = $id_cliente";
         $response = $this->db->query($sql);
         return $response;
+    }
+
+    public function InsertAlchohol($id_cliente, $alcohol){
+        $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente ,'', '', '', '', '$alcohol', '');";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function UpdateAlcohol($id_cliente, $alcohol){
+        $sql = "UPDATE formularios SET alcohol = '$alcohol' WHERE id_cliente = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function InsertPesoInicial($id_cliente, $type, $peso){
+        $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente ,'$peso', '$type', CURDATE());";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function UpdatePesoInicial($id_cliente, $peso){
+        $sql = "UPDATE pesos SET peso = '$peso' WHERE id_cliente = $id_cliente AND tipo = 'inicial'";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function InsertPesoMeta($id_cliente, $peso){
+        $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente ,'$peso', 'meta', CURDATE());";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function UpdatePesoMeta($id_cliente, $peso){
+        $sql = "UPDATE pesos SET peso = '$peso' WHERE id_cliente = $id_cliente AND tipo = 'meta'";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function getPesoMeta($id_cliente){
+        $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente AND tipo = 'meta'";
+        $response = $this->db->query($sql);
+
+        if($response){
+            if($response->num_rows > 0){
+                return $response->num_rows;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return $response;
+        }
     }
 }
 ?>

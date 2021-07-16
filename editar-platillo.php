@@ -50,7 +50,12 @@ if($platillos && $platillos->num_rows == 1){
                     <label for="elaboracion">Tiempo de Elaboracion</label>
                     <input type="text" class="form-control" name="elaboracion" value="<?=$platillo->tiempo_elaboracion?>" placeholder="elaboracion" required>
                   </div>
-                  <div class="form-group"><label for="">Imagen del platillo</label></div>
+                  <div class="form-group">
+                    <label for="">Imagen del platillo</label>
+                    <br>
+                    <img src="<?=$platillo->url_img?>" alt="" height="100" width="100">
+                    <label><?=str_replace("uploads/platillos/", "",$platillo->url_img)?></label>
+                  </div>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile" name="img">
                       <label class="custom-file-label" for="customFile">Choose file</label>
