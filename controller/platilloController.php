@@ -10,7 +10,7 @@ if(isset($_POST)){
             $filename = $file['name'];
             $mimetype = $file['type'];
 
-            if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "img/png"){
+            if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png"){
                 if(!is_dir('../uploads/platillos')){
                     mkdir('../uploads/platillos', 0777, true);
                 }
@@ -53,7 +53,7 @@ if(isset($_POST)){
                 $filename = $file['name'];
                 $mimetype = $file['type'];
 
-                if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "img/png"){
+                if($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png"){
                     if(!is_dir('../uploads/platillos')){
                         mkdir('../uploads/platillos', 0777, true);
                     }
