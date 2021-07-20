@@ -2,6 +2,10 @@
 require_once 'config/parameters.php';
 require_once 'layaut/nav.php';
 require_once 'layaut/sidebar.php';
+require_once 'model/platillos.php';
+require_once 'config/db.php';
+$_platillos = new platillos();
+$platillos = $_platillos->getPlatillos();
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -33,7 +37,12 @@ require_once 'layaut/sidebar.php';
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                    <input list="nombres" type="text" class="form-control" name="nombre" placeholder="Nombre" autocomplete="off" required>
+                    <datalist id="nombres">
+                      <?php while($platillo = $platillos->fetch_object()): ?>
+                        <option value="<?=$platillo->nombre?>"></option>
+                      <?php endwhile; ?>
+                    </datalist>
                   </div>
                   <div class="form-group">
                     <label for="apellidos">Procedimiento</label>
