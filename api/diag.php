@@ -236,6 +236,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 'altura' => $formulario->altura,
                 'actividad' => $formulario->actividad_fisica,
                 'alcohol' => $formulario->alcohol,
+                'meta' => $formulario->meta,
                 'pesoMeta' => $meta->peso,
                 'edad' => $client->edad,
                 'sexo' => $client->sexo
