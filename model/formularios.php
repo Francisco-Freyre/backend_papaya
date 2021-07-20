@@ -134,6 +134,7 @@ class formularios{
         return $response;
     }
 
+    //Confirma si ya hay peso meta
     public function getPesoMeta($id_cliente){
         $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente AND tipo = 'meta'";
         $response = $this->db->query($sql);
@@ -149,6 +150,12 @@ class formularios{
         else{
             return $response;
         }
+    }
+
+    //Obtiene el peso meta
+    public function getPesoIdeal($id_cliente){
+        $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente AND tipo = 'meta'";
+        return $response = $this->db->query($sql);
     }
 }
 ?>

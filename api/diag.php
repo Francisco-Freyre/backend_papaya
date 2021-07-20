@@ -1,8 +1,10 @@
 <?php
 require_once '../model/formularios.php';
+require_once '../model/clientes.php';
 require_once '../config/db.php';
 
 $_formularios = new formularios();
+$_clientes = new clientes();
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
@@ -223,11 +225,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         //Funciona
         $formulario = $_formularios->getFormulario($_GET['idCliente']);
-        if(is_object($formulario)){
+        $pesoMeta = $_formularios->getPesoIdeal($_GET['idCliente']);
+        $cliente = $_clientes->readOne($_GET['idCliente']);
+        $meta = $pesoMeta->fetch_object();
+        $client = $cliente->fetch_object();
+        if(is_object($formulario) && is_object($meta) && is_object($client)){
             $response = array(
                 'resultado' => true,
                 'peso' => $formulario->peso,
-                'altura' => $formulario->altura
+                'altura' => $formulario->altura,
+                'actividad' => $formulario->actividad_fisica,
+                'alcohol' => $formulario->alcohol,
+                'pesoMeta' => $meta->peso,
+                'edad' => $client->edad,
+                'sexo' => $client->sexo
             );
             die(json_encode($response));
         }
