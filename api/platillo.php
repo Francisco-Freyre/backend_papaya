@@ -20,6 +20,31 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 die(json_encode($response));
             }
         }
+
+        if(isset($_GET['idPlatillo'])){
+            $platillo = $_platillos->getPlatillo($_GET['idPlatillo']);
+            $ingredientes = $_platillos->getIngredientes($_GET['idPlatillo']);
+            if($platillo && $ingredientes){
+                $AIngredientes = [];
+                while($ingrediente = $ingredientes->fetch_object()){
+                    array_push($AIngredientes, $ingrediente->nombre);
+                }
+                $plati = $platillo->fetch_object();
+                $response = array(
+                    'resultado' => true,
+                    'nombre' => $plati->nombre,
+                    'procedimiento' => $plati->procedimiento,
+                    'tiempo' => $plati->tiempo_elaboracion,
+                    'energia' => $plati->energia,
+                    'proteina' => $plati->proteina,
+                    'carbohidratos' => $plati->carbohidratos,
+                    'grasas' => $plati->grasas,
+                    'img' => $plati->url_img,
+                    'ingredientes' => $AIngredientes
+                );
+                die(json_encode($response));
+            }
+        }
         break;
     case 'POST':
         break;
