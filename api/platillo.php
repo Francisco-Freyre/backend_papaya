@@ -13,7 +13,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         'id' => $platillo->id,
                         'nombre' => $platillo->nombre,
                         'energia' => $platillo->energia,
-                        'img' => $platillo->url_img
+                        'img' => 'https://www.bithives.com/PapayaApp/'.$platillo->url_img
                     );
                     array_push($response, $OPlatillo);
                 }
