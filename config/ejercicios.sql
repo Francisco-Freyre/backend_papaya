@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2021 a las 21:50:12
+-- Tiempo de generación: 26-07-2021 a las 19:21:56
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.5
 
@@ -24,18 +24,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `formularios`
+-- Estructura de tabla para la tabla `ejercicios`
 --
 
-CREATE TABLE `formularios` (
+CREATE TABLE `ejercicios` (
   `id` int(11) NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `altura` float(10,2) NOT NULL,
-  `peso` float(10,2) NOT NULL,
-  `meta` varchar(100) NOT NULL,
-  `actividad_fisica` varchar(100) NOT NULL,
-  `alcohol` varchar(100) NOT NULL,
-  `comida_grande` varchar(100) NOT NULL
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `url_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -43,31 +39,20 @@ CREATE TABLE `formularios` (
 --
 
 --
--- Indices de la tabla `formularios`
+-- Indices de la tabla `ejercicios`
 --
-ALTER TABLE `formularios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cliente` (`id_cliente`);
+ALTER TABLE `ejercicios`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `formularios`
+-- AUTO_INCREMENT de la tabla `ejercicios`
 --
-ALTER TABLE `formularios`
+ALTER TABLE `ejercicios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `formularios`
---
-ALTER TABLE `formularios`
-  ADD CONSTRAINT `formularios_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
