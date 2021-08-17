@@ -66,6 +66,18 @@ class platillos {
         }
     }
 
+    public function getPlatilloNombre($nombre){
+        $sql = "SELECT * FROM platillos WHERE nombre = $nombre";
+        $response = $this->db->query($sql);
+
+        if($response->num_rows == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public function getAporte($id){
         $sql = "SELECT * FROM aporte_nutricional WHERE platillo_id = $id";
         $response = $this->db->query($sql);

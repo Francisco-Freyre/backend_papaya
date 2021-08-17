@@ -74,5 +74,11 @@ class pesos{
             return $response;
         }
     }
+
+    public function insertPesoContinuo($peso, $id_cliente){
+        $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente, '$peso', 'continuo', CURDATE());";
+        $response = $this->db->query($sql);
+        return $response;
+    }
 }
 ?>

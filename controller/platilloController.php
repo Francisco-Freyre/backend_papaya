@@ -26,7 +26,10 @@ if(isset($_POST)){
                 echo "</script>";
             }
             else{
-                echo 'Fallo';
+                echo "<script>";
+                echo "alert('Estas intentanto crear un platillo que ya existe');";
+                echo "window.location.replace('../crear-platillos.php');";
+                echo "</script>";
             }
         }
 
