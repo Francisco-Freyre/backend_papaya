@@ -7,6 +7,16 @@ require_once 'config/db.php';
 $_platillos = new platillos();
 $platillos = $_platillos->getPlatillos();
 ?>
+  <script type="text/javascript">
+    function ConfirmDelete(){
+      let respuesta = confirm('¿Estas seguro que deseas eliminar el platillo?');
+      if(respuesta){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -46,7 +56,7 @@ $platillos = $_platillos->getPlatillos();
                                     <td><?=$platillo->nombre?></td>
                                     <td><?=$platillo->tiempo_elaboracion?></td>
                                     <td><?=$platillo->energia?></td>
-                                    <td> <a class="btn btn-warning" href="editar-platillo.php?id=<?=$platillo->id?>">Editar</a> | <a class="btn btn-danger" href="controller/platilloController.php?accion=borrar-platillos&id=<?=$platillo->id?>">Eliminar</a></td>
+                                    <td> <a class="btn btn-warning" href="editar-platillo.php?id=<?=$platillo->id?>">Editar</a> | <a class="btn btn-danger" href="controller/platilloController.php?accion=borrar-platillos&id=<?=$platillo->id?>" onclick="return ConfirmDelete()">Eliminar</a></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

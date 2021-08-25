@@ -33,9 +33,11 @@ $dietas = $_dietas->read();
                         <thead>
                             <tr>
                                 <th>Kcal</th>
-                                <th>Descripcion</th>
-                                <th>Periodo</th>
+                                <th>Tiempos</th>
+                                <th>Grs. Nutrientes</th>
+                                <th>% Nutrientes</th>
                                 <th>Categoria</th>
+                                <th>Descripcion</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -43,9 +45,11 @@ $dietas = $_dietas->read();
                             <?php while($dieta = $dietas->fetch_object()): ?>
                                 <tr>
                                     <td><?=$dieta->kcal?></td>
-                                    <td><?=$dieta->descripcion?></td>
-                                    <td><?=$dieta->periodo?></td>
+                                    <td><?=$dieta->tiem_alimen?></td>
+                                    <td><?=$dieta->gr_car.",".$dieta->gr_pro.",".$dieta->gr_gra?></td>
+                                    <td><?=$dieta->por_car.",".$dieta->por_pro.",".$dieta->por_gra?></td>
                                     <td><?=$dieta->categoria?></td>
+                                    <td><?=$dieta->descripcion?></td>
                                     <td> <a class="btn btn-warning" href="editar-dieta.php?id=<?=$dieta->id?>">Editar</a></td>
                                 </tr>
                             <?php endwhile; ?>

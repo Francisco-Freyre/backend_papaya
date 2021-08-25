@@ -111,7 +111,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="crear-dieta.php" class="nav-link">
                   <i class="nav-icon fas fa-plus"></i>
                   <p> Crear dietas</p>
                 </a>

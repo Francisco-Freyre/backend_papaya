@@ -6,21 +6,11 @@ class dietas {
         $this->db = Database::connect();
     }
 
-    public function create($nombre, $procedimiento, $elaboracion, $energia, $proteinas, $carbo, $grasas, $url_img){
-        $sql = "INSERT INTO platillos VALUES(NULL, '$nombre', '$procedimiento', '$elaboracion', '$energia', '$proteinas', '$carbo', '$grasas', '$url_img');";
+    public function create($d_lunes, $d_martes, $d_miercoles, $d_jueves, $d_viernes, $d_sabado, $d_domingo, $c_lunes, $c_martes, $c_miercoles, $c_jueves, $c_viernes, $c_sabado, $c_domingo, $c2_lunes, $c2_martes, $c2_miercoles, $c2_jueves, $c2_viernes, $c2_sabado, $c2_domingo, $co_lunes, $co_martes, $co_miercoles, $co_jueves, $co_viernes, $co_sabado, $co_domingo, $c3_lunes, $c3_martes, $c3_miercoles, $c3_jueves, $c3_viernes, $c3_sabado, $c3_domingo, $c4_lunes, $c4_martes, $c4_miercoles, $c4_jueves, $c4_viernes, $c4_sabado, $c4_domingo, $ce_lunes, $ce_martes, $ce_miercoles, $ce_jueves, $ce_viernes, $ce_sabado, $ce_domingo, $tiem_alimen, $periodo, $gr_car, $gr_pro, $gr_gra, $por_car, $por_pro,  $por_gra, $categoria, $fibra, $kcal, $descripcion){
+        $sql = "INSERT INTO dietas VALUES(NULL, '$d_lunes', '$d_martes', '$d_miercoles', '$d_jueves', '$d_viernes', '$d_sabado', '$c_lunes', '$c_martes', '$c_miercoles', '$c_jueves', '$c_viernes', '$c_sabado', '$co_lunes', '$co_martes', '$co_miercoles', '$co_jueves', '$co_viernes', '$co_sabado', '$c2_lunes', '$c2_martes', '$c2_miercoles', '$c2_jueves', '$c2_viernes', '$c2_sabado', '$ce_lunes', '$ce_martes', '$ce_miercoles', '$ce_jueves', '$ce_viernes', '$ce_sabado', 0, $kcal, '$descripcion', $tiem_alimen, '$periodo', '$categoria', '$c3_lunes', '$c3_martes', '$c3_miercoles', '$c3_jueves', '$c3_viernes', '$c3_sabado', $gr_car, $gr_pro, $gr_gra, $por_car, $por_pro, $por_gra, '$d_domingo', '$c_domingo', '$c3_domingo', '$co_domingo', '$c2_domingo', '$ce_domingo', '$c4_lunes', '$c4_martes', '$c4_miercoles', '$c4_jueves', '$c4_viernes', '$c4_sabado', '$c4_domingo', $fibra);";
         $save = $this->db->query($sql);
         if($save){
             return $this->db->insert_id;
-        }else{
-            return $save;
-        }
-    }
-
-    public function create_aporte($id, $energia, $proteinas, $carbo, $grasas, $sodio, $potasio, $calcio, $hierro, $va, $ve, $vd, $vc, $acido){
-        $sql = "INSERT INTO aporte_nutricional VALUES(NULL, $id, '$energia', '$proteinas', '$carbo', '$grasas', '$sodio', '$potasio', '$calcio', '$hierro', '$va', '$ve', '$vd', '$vc', '$acido');";
-        $save = $this->db->query($sql);
-        if($save){
-            return $save;
         }else{
             return $save;
         }
@@ -62,12 +52,6 @@ class dietas {
 
         $response = $this->db->query($sql);
         return $response; 
-    }
-
-    public function editarAporte($id, $ener, $prote, $carbo, $grasa, $sodio, $pota, $cal, $hie, $va, $ve, $vc, $vd, $af){
-        $sql = "UPDATE aporte_nutricional SET energia = '$ener', proteinas = '$prote', carbohidratos = '$carbo', grasas = '$grasa', sodio = '$sodio', potasio = '$pota', calcio = '$cal', hierro = '$hie', vitamina_a = '$va', vitamina_e = '$ve', vitamina_c = '$vc', vitamina_d = '$vd', acido_folico = '$af' WHERE platillo_id = $id";
-        $response = $this->db->query($sql);
-        return $response;
     }
 }
 ?>
