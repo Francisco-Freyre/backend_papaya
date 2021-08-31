@@ -7,12 +7,12 @@ class clientes{
     }
 
     // Funcion que crea cliente nuevo, retorna el resultado de la consulta o falso
-    public function create($nombre, $apellidos, $edad, $sexo, $email, $password){
+    public function create($nombre, $apellidos, $estado, $email, $password){
         $opciones = array(
             'cost' => 12
         );
         $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
-        $sql = "INSERT INTO clientes VALUES(NULL, '$nombre', '$apellidos', '$edad', '$sexo', '$email', '$password_hashed', '');";
+        $sql = "INSERT INTO clientes VALUES(NULL, '$nombre', '$apellidos', '$estado', 0, '', '$email', '$password_hashed', '');";
         $save = $this->db->query($sql);
         
         $result = false;

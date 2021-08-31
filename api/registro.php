@@ -7,8 +7,8 @@
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'POST':
             $_POST = json_decode(file_get_contents('php://input'), true);
-            if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['edad']) && isset($_POST['sexo']) && isset($_POST['email']) && isset($_POST['password'])){
-                $cliente = $_clientes->create($_POST['nombre'], $_POST['apellido'], $_POST['edad'], $_POST['sexo'], $_POST['email'], $_POST['password']);
+            if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['estado']) && isset($_POST['email']) && isset($_POST['password'])){
+                $cliente = $_clientes->create($_POST['nombre'], $_POST['apellido'], $_POST['estado'], $_POST['email'], $_POST['password']);
                 if($cliente){
                     $response = array(
                         'resultado' => 'exito',

@@ -42,7 +42,6 @@ $platillos = $_platillos->getPlatillos();
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Img</th>
                                 <th>Nombre</th>
                                 <th>Tiempo de elaboracion</th>
                                 <th>Energia</th>
@@ -52,7 +51,6 @@ $platillos = $_platillos->getPlatillos();
                         <tbody>
                             <?php while($platillo = $platillos->fetch_object()): ?>
                                 <tr>
-                                    <td> <img src="<?=$platillo->url_img?>" alt="IMG" class="rounded-circle" width="50" height="50"></td>
                                     <td><?=$platillo->nombre?></td>
                                     <td><?=$platillo->tiempo_elaboracion?></td>
                                     <td><?=$platillo->energia?></td>
