@@ -98,6 +98,12 @@ class formularios{
         return $response;
     }
 
+    public function edadSexo($id_cliente, $edad, $sexo){
+        $sql = "UPDATE clientes SET edad = $edad, sexo = '$sexo' WHERE id = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
     public function InsertAlchohol($id_cliente, $alcohol){
         $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente ,'', '', '', '', '$alcohol', '');";
         $response = $this->db->query($sql);

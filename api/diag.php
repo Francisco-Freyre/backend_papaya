@@ -125,7 +125,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if(is_object($formulario)){
                 $meta = $_formularios->UpdateFechaEstatura($_POST['idCliente'], $_POST['estatura'], $_POST['peso']);
                 $inicial = $_formularios->InsertPesoInicial($_POST['idCliente'], 'inicial', $_POST['peso']);
-                if($meta && $inicial){
+                $cliente = $_formularios->edadSexo($_POST['idCliente'], $_POST['edad'], $_POST['sexo']);
+                if($meta && $inicial && $cliente){
                     $response = array(
                         'resultado' => true
                     );
