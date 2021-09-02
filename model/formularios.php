@@ -25,7 +25,7 @@ class formularios{
     }
 
     public function insertMeta($id_cliente, $objetivo){
-        $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente, '', '', '$objetivo', '', '', '');";
+        $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente, 0.0, 0.0, '$objetivo', '', '', '');";
         $response = $this->db->query($sql);
         return $response;
     }

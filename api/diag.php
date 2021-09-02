@@ -225,30 +225,50 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'GET':
         //Funciona
-        $formulario = $_formularios->getFormulario($_GET['idCliente']);
-        $pesoMeta = $_formularios->getPesoIdeal($_GET['idCliente']);
-        $cliente = $_clientes->readOne($_GET['idCliente']);
-        $meta = $pesoMeta->fetch_object();
-        $client = $cliente->fetch_object();
-        if(is_object($formulario) && is_object($meta) && is_object($client)){
-            $response = array(
-                'resultado' => true,
-                'peso' => $formulario->peso,
-                'altura' => $formulario->altura,
-                'actividad' => $formulario->actividad_fisica,
-                'alcohol' => $formulario->alcohol,
-                'meta' => $formulario->meta,
-                'pesoMeta' => $meta->peso,
-                'edad' => $client->edad,
-                'sexo' => $client->sexo
-            );
-            die(json_encode($response));
+        if(isset($_GET['meta'])){
+            $formulario = $_formularios->getFormulario($_GET['idCliente']);
+            if(is_object($formulario)){
+                $response = array(
+                    'resultado' => true,
+                    'peso' => $formulario->peso,
+                    'altura' => $formulario->altura
+                );
+                die(json_encode($response));
+            }
+            else{
+                $response = array(
+                    'resultado' => false
+                );
+                die(json_encode($response));
+            }
         }
-        else{
-            $response = array(
-                'resultado' => false
-            );
-            die(json_encode($response));
+
+        if(isset($_GET['pending'])){
+            $formulario = $_formularios->getFormulario($_GET['idCliente']);
+            $pesoMeta = $_formularios->getPesoIdeal($_GET['idCliente']);
+            $cliente = $_clientes->readOne($_GET['idCliente']);
+            $meta = $pesoMeta->fetch_object();
+            $client = $cliente->fetch_object();
+            if(is_object($formulario) && is_object($meta) && is_object($client)){
+                $response = array(
+                    'resultado' => true,
+                    'peso' => $formulario->peso,
+                    'altura' => $formulario->altura,
+                    'actividad' => $formulario->actividad_fisica,
+                    'alcohol' => $formulario->alcohol,
+                    'meta' => $formulario->meta,
+                    'pesoMeta' => $meta->peso,
+                    'edad' => $client->edad,
+                    'sexo' => $client->sexo
+                );
+                die(json_encode($response));
+            }
+            else{
+                $response = array(
+                    'resultado' => false
+                );
+                die(json_encode($response));
+            }
         }
         break;
 }
