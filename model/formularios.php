@@ -163,5 +163,22 @@ class formularios{
         $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente AND tipo = 'meta'";
         return $response = $this->db->query($sql);
     }
+
+    public function getForm_Result($idCliente){
+        $sql = "SELECT * FROM form_result WHERE cliente_id = $idCliente";
+        return $response = $this->db->query($sql);
+    }
+
+    public function insertForm_Result($idCliente, $kcal){
+        $sql = "INSERT INTO form_result VALUES(NULL, $idCliente ,$kcal, 0);";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function uodateForm_ResultKcal($idCliente, $kcal){
+        $sql = "UPDATE form_result SET kcal = $kcal WHERE cliente_id = $idCliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
 }
 ?>

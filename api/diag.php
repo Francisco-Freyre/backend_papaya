@@ -154,6 +154,41 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
+        if(isset($_POST['kcal'])){
+            $form = $_formularios->getForm_Result($_POST['idCliente']);
+            if($form->num_rows == 0){
+                $result = $_formularios->insertForm_Result($_POST['idCliente'], $_POST['kcal']);
+                if($result){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
+                }
+                else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
+            }
+            else{
+                $result = $_formularios->uodateForm_ResultKcal($_POST['idCliente'], $_POST['kcal']);
+                if($result){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
+                }
+                else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
+            }
+            
+        }
+
         //Funciona
         if(isset($_POST['alcohol'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
@@ -243,7 +278,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
-        if(isset($_GET['pending'])){
+        if(isset($_GET['calorias'])){
             $formulario = $_formularios->getFormulario($_GET['idCliente']);
             $pesoMeta = $_formularios->getPesoIdeal($_GET['idCliente']);
             $cliente = $_clientes->readOne($_GET['idCliente']);
