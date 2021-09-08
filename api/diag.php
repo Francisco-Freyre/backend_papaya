@@ -1,10 +1,12 @@
 <?php
 require_once '../model/formularios.php';
+require_once '../model/form_result.php';
 require_once '../model/clientes.php';
 require_once '../config/db.php';
 
 $_formularios = new formularios();
 $_clientes = new clientes();
+$_form_result = new form_result();
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
@@ -154,41 +156,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
-        if(isset($_POST['kcal'])){
-            $form = $_formularios->getForm_Result($_POST['idCliente']);
-            if($form->num_rows == 0){
-                $result = $_formularios->insertForm_Result($_POST['idCliente'], $_POST['kcal']);
-                if($result){
-                    $response = array(
-                        'resultado' => true
-                    );
-                    die(json_encode($response));
-                }
-                else{
-                    $response = array(
-                        'resultado' => false
-                    );
-                    die(json_encode($response));
-                }
-            }
-            else{
-                $result = $_formularios->uodateForm_ResultKcal($_POST['idCliente'], $_POST['kcal']);
-                if($result){
-                    $response = array(
-                        'resultado' => true
-                    );
-                    die(json_encode($response));
-                }
-                else{
-                    $response = array(
-                        'resultado' => false
-                    );
-                    die(json_encode($response));
-                }
-            }
-            
-        }
-
         //Funciona
         if(isset($_POST['alcohol'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
@@ -254,6 +221,46 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     );
                     die(json_encode($response));
                 }
+            }
+        }
+
+        if(isset($_POST['kcal'])){
+            $dieta = $_form_result->dietas($_POST['kcal']);
+            if($dieta->num_rows >= 1){
+                $menu = $dieta->fetch_object();
+                $result = $_form_result->read($_POST['idCliente']);
+                if($result->num_rows == 1){
+                    $update = $_form_result->update($_POST['kcal'], $_POST['idCliente'], $menu->id);
+                    if($update){
+                        $response = array(
+                            'resultado' => true
+                        );
+                        die(json_encode($response));
+                    }else{
+                        $response = array(
+                            'resultado' => false
+                        );
+                        die(json_encode($response));
+                    }
+                }else{
+                    $create = $_form_result->create($_POST['idCliente'], $_POST['kcal'], $menu->id);
+                    if($create){
+                        $response = array(
+                            'resultado' => true
+                        );
+                        die(json_encode($response));
+                    }else{
+                        $response = array(
+                            'resultado' => false
+                        );
+                        die(json_encode($response));
+                    }
+                }
+            }else{
+                $response = array(
+                    'resultado' => false
+                );
+                die(json_encode($response));
             }
         }
         break;
