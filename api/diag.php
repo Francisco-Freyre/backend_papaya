@@ -312,6 +312,87 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 die(json_encode($response));
             }
         }
+
+        if(isset($_GET['kcal'])){
+            $datos = $_form_result->read($_GET['idCliente']);
+            if($datos->num_rows == 1){
+                $dato = $datos->fetch_object();
+                $dietas = $_form_result->dieta($dato->dieta_id);
+                if($dietas){
+                    $dieta = $dietas->fetch_object();
+                    $response = array(
+                        'resultado' => true,
+                        'id' => $dieta->id,
+                        'd_lunes' => $dieta->d_lunes,
+                        'd_martes' => $dieta->d_martes,
+                        'd_miercoles' => $dieta->d_miercoles,
+                        'd_jueves' => $dieta->d_jueves,
+                        'd_viernes' => $dieta->d_viernes,
+                        'd_sabado' => $dieta->d_sabado,
+                        'c_lunes' => $dieta->c_lunes,
+                        'c_martes' => $dieta->c_martes,
+                        'c_miercoles' => $dieta->c_miercoles,
+                        'c_jueves' => $dieta->c_jueves,
+                        'c_viernes' => $dieta->c_viernes,
+                        'c_sabado' => $dieta->c_sabado,
+                        'co_lunes' => $dieta->co_lunes,
+                        'co_martes' => $dieta->co_martes,
+                        'co_miercoles' => $dieta->co_miercoles,
+                        'co_jueves' => $dieta->co_jueves,
+                        'co_viernes' => $dieta->co_viernes,
+                        'co_sabado' => $dieta->co_sabado,
+                        'c2_lunes' => $dieta->c2_lunes,
+                        'c2_martes' => $dieta->c2_martes,
+                        'c2_miercoles' => $dieta->c2_miercoles,
+                        'c2_jueves' => $dieta->c2_jueves,
+                        'c2_viernes' => $dieta->c2_viernes,
+                        'c2_sabado' => $dieta->c2_sabado,
+                        'ce_lunes' => $dieta->ce_lunes,
+                        'ce_martes' => $dieta->ce_martes,
+                        'ce_miercoles' => $dieta->ce_miercoles,
+                        'ce_jueves' => $dieta->ce_jueves,
+                        'ce_viernes' => $dieta->ce_viernes,
+                        'ce_sabado' => $dieta->ce_sabado,
+                        'kcal' => $dieta->kcal,
+                        'descripcion' => $dieta->descripcion,
+                        'tiem_alimen' => $dieta->tiem_alimen,
+                        'periodo' => $dieta->periodo,
+                        'categoria' => $dieta->categoria,
+                        'c3_lunes' => $dieta->c3_lunes,
+                        'c3_martes' => $dieta->c3_martes,
+                        'c3_miercoles' => $dieta->c3_miercoles,
+                        'c3_jueves' => $dieta->c3_jueves,
+                        'c3_viernes' => $dieta->c3_viernes,
+                        'c3_sabado' => $dieta->c3_sabado,
+                        'd_domingo' => $dieta->d_domingo,
+                        'c_domingo' => $dieta->c_domingo,
+                        'c3_domingo' => $dieta->c3_domingo,
+                        'co_domingo' => $dieta->co_domingo,
+                        'c2_domingo' => $dieta->c2_domingo,
+                        'ce_domingo' => $dieta->ce_domingo,
+                        'c4_lunes' => $dieta->c4_lunes,
+                        'c4_martes' => $dieta->c4_martes,
+                        'c4_miercoles' => $dieta->c4_miercoles,
+                        'c4_jueves' => $dieta->c4_jueves,
+                        'c4_viernes	' => $dieta->c4_viernes,
+                        'c4_sabado' => $dieta->c4_sabado,
+                        'c4_domingo' => $dieta->c4_domingo
+                    );
+                    die(json_encode($response));
+                }else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
+            }
+            else{
+                $response = array(
+                    'resultado' => false
+                );
+                die(json_encode($response));
+            }
+        }
         break;
 }
 ?>

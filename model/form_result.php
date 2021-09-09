@@ -27,5 +27,10 @@ class form_result{
         $sql = "SELECT * FROM dietas WHERE kcal >= $kcal - 50 AND kcal <= $kcal + 50";
         return $response = $this->db->query($sql);
     }
+
+    public function dieta($id){
+        $sql = "SELECT * FROM dietas WHERE id = $id";
+        return $response = $this->db->query($sql);
+    }
 }
 ?>
