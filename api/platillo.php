@@ -47,6 +47,40 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
     case 'POST':
+        $_POST = json_decode(file_get_contents('php://input'), true);
+        if(isset($_POST['desayuno'])){
+            $desayuno = $_platillos->getPlaNombre($_POST['desayuno']);
+            $colacion = $_platillos->getPlaNombre($_POST['colacion']);
+            $colacion2 = $_platillos->getPlaNombre($_POST['colacion2']);
+            $comida = $_platillos->getPlaNombre($_POST['comida']);
+            $cena = $_platillos->getPlaNombre($_POST['cena']);
+            if($desayuno && $colacion && $colacion2 && $comida && $cena){
+                $desa = $desayuno->fetch_object();
+                $col = $colacion->fetch_object();
+                $col2 = $colacion2->fetch_object();
+                $com = $comida->fetch_object();
+                $cen = $cena->fetch_object();
+                $response = array(
+                    'resultado' => true,
+                    'img_des' => $desa->url_img,
+                    'kcal_des' => $desa->energia,
+                    'img_col' => $col->url_img,
+                    'kcal_col' => $col->energia,
+                    'img_col2' => $col2->url_img,
+                    'kcal_col2' => $col2->energia,
+                    'img_com' => $com->url_img,
+                    'kcal_com' => $com->energia,
+                    'img_cen' => $cen->url_img,
+                    'kcal_cen' => $cen->energia
+                );
+                die(json_encode($response));
+            }else{
+                $response = array(
+                    'resultado' => false,
+                );
+                die(json_encode($response));
+            }
+        }
         break;
 }
 ?>

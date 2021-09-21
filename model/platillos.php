@@ -43,7 +43,7 @@ class platillos {
     }
 
     public function getPlatillos(){
-        $sql = "SELECT * FROM platillos";
+        $sql = "SELECT * FROM platillos ORDER BY nombre";
         $response = $this->db->query($sql);
 
         if($response){
@@ -67,7 +67,7 @@ class platillos {
     }
 
     public function getPlatilloNombre($nombre){
-        $sql = "SELECT * FROM platillos WHERE nombre = $nombre";
+        $sql = "SELECT * FROM platillos WHERE nombre = '$nombre'";
         $response = $this->db->query($sql);
 
         if($response->num_rows == 0){
@@ -76,6 +76,12 @@ class platillos {
         else{
             return false;
         }
+    }
+
+    public function getPlaNombre($nombre){
+        $sql = "SELECT * FROM platillos WHERE nombre = '$nombre'";
+        $response = $this->db->query($sql);
+        return $response;
     }
 
     public function getAporte($id){
