@@ -62,14 +62,19 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $cen = $cena->fetch_object();
                 $response = array(
                     'resultado' => true,
+                    'id_des' => $desa->id,
                     'img_des' => $desa->url_img,
                     'kcal_des' => $desa->energia,
+                    'id_col' => $col->id,
                     'img_col' => $col->url_img,
                     'kcal_col' => $col->energia,
+                    'id_col2' => $col2->id,
                     'img_col2' => $col2->url_img,
                     'kcal_col2' => $col2->energia,
+                    'id_com' => $com->id,
                     'img_com' => $com->url_img,
                     'kcal_com' => $com->energia,
+                    'id_cen' => $cen->id,
                     'img_cen' => $cen->url_img,
                     'kcal_cen' => $cen->energia
                 );
