@@ -49,11 +49,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $_POST = json_decode(file_get_contents('php://input'), true);
         if(isset($_POST['desayuno'])){
-            $desayuno = $_platillos->getPlaNombre($_POST['desayuno']);
-            $colacion = $_platillos->getPlaNombre($_POST['colacion']);
-            $colacion2 = $_platillos->getPlaNombre($_POST['colacion2']);
-            $comida = $_platillos->getPlaNombre($_POST['comida']);
-            $cena = $_platillos->getPlaNombre($_POST['cena']);
+            $desayuno = $_platillos->getPlaNombre($_POST['desayuno'], $_POST['des_kcal']);
+            $colacion = $_platillos->getPlaNombre($_POST['colacion'], $_POST['col_kcal']);
+            $colacion2 = $_platillos->getPlaNombre($_POST['colacion2'], $_POST['col2_kcal']);
+            $comida = $_platillos->getPlaNombre($_POST['comida'], $_POST['com_kcal']);
+            $cena = $_platillos->getPlaNombre($_POST['cena'], $_POST['cen_kcal']);
             if($desayuno && $colacion && $colacion2 && $comida && $cena){
                 $desa = $desayuno->fetch_object();
                 $col = $colacion->fetch_object();

@@ -24,7 +24,7 @@ class form_result{
     }
 
     public function dietas($kcal){
-        $sql = "SELECT * FROM dietas WHERE kcal >= $kcal - 50 AND kcal <= $kcal + 50";
+        $sql = "SELECT * FROM dietas WHERE kcal >= $kcal - 50 AND kcal <= $kcal + 50 AND categoria = 'PRUEBA'";
         return $response = $this->db->query($sql);
     }
 
