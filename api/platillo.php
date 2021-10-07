@@ -9,9 +9,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if($platillos){
                 $response = [];
                 while($platillo = $platillos->fetch_object()){
+                    $nombres = explode(' - ', $platillo->nombre);
                     $OPlatillo = array(
                         'id' => $platillo->id,
-                        'nombre' => $platillo->nombre,
+                        'nombre' => $nombres[0],
                         'energia' => $platillo->energia,
                         'img' => 'https://www.bithives.com/PapayaApp/'.$platillo->url_img
                     );
