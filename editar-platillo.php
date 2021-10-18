@@ -48,7 +48,7 @@ if($platillos && $platillos->num_rows == 1){
                   </div>
                   <div class="form-group">
                     <label for="elaboracion">Tiempo de Elaboracion</label>
-                    <input type="text" class="form-control" name="elaboracion" value="<?=$platillo->tiempo_elaboracion?>" placeholder="elaboracion" required>
+                    <input type="number" class="form-control" name="elaboracion" value="<?=$platillo->tiempo_elaboracion?>" placeholder="elaboracion" required>
                   </div>
                   <div class="form-group">
                     <label for="">Imagen del platillo</label>
@@ -69,19 +69,19 @@ if($platillos && $platillos->num_rows == 1){
                   </div>
                   <div class="form-group">
                     <label for="energianutri">Energia</label>
-                    <input type="text" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="proteina">Proteina</label>
-                    <input type="text" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
+                    <input type="number" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
                   </div>
                   <div class="form-group">
                     <label for="carbohidratos">Carbohidratos</label>
-                    <input type="text" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
+                    <input type="number" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="proteina">Proteina</label>
+                    <input type="number" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
                   </div>
                   <div class="form-group">
                     <label for="grasas">Grasas</label>
-                    <input type="text" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
+                    <input type="number" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
                   </div>
                   <div class="form-group">
                     <label for="nombre">Ingredientes</label>

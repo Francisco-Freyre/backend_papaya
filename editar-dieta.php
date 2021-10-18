@@ -66,31 +66,31 @@ $Odieta = $dieta->fetch_object();
                         </div>
 
                         <div class="col">
-                            <textarea name="d_lunes" cols="18" rows="5"><?=$Odieta->d_lunes?></textarea>
+                            <textarea name="d_lunes" cols="15" rows="5"><?=$Odieta->d_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_martes" cols="18" rows="5"><?=$Odieta->d_martes?></textarea>
+                            <textarea name="d_martes" cols="15" rows="5"><?=$Odieta->d_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_miercoles" cols="18" rows="5"><?=$Odieta->d_miercoles?></textarea>
+                            <textarea name="d_miercoles" cols="15" rows="5"><?=$Odieta->d_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_jueves" cols="18" rows="5"><?=$Odieta->d_jueves?></textarea>
+                            <textarea name="d_jueves" cols="15" rows="5"><?=$Odieta->d_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_viernes" cols="18" rows="5"><?=$Odieta->d_viernes?></textarea>
+                            <textarea name="d_viernes" cols="15" rows="5"><?=$Odieta->d_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_sabado" cols="18" rows="5"><?=$Odieta->d_sabado?></textarea>
+                            <textarea name="d_sabado" cols="15" rows="5"><?=$Odieta->d_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_domingo" cols="18" rows="5"><?=$Odieta->d_domingo?></textarea>
+                            <textarea name="d_domingo" cols="15" rows="5"><?=$Odieta->d_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -101,65 +101,66 @@ $Odieta = $dieta->fetch_object();
                         </div>
 
                         <div class="col">
-                            <textarea name="c_lunes" cols="18" rows="5"><?=$Odieta->c_lunes?></textarea>
+                            <textarea name="c_lunes" cols="15" rows="5"><?=$Odieta->c_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_martes" cols="18" rows="5"><?=$Odieta->c_martes?></textarea>
+                            <textarea name="c_martes" cols="15" rows="5"><?=$Odieta->c_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_miercoles" cols="18" rows="5"><?=$Odieta->c_miercoles?></textarea>
+                            <textarea name="c_miercoles" cols="15" rows="5"><?=$Odieta->c_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_jueves" cols="18" rows="5"><?=$Odieta->c_jueves?></textarea>
+                            <textarea name="c_jueves" cols="15" rows="5"><?=$Odieta->c_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_viernes" cols="18" rows="5"><?=$Odieta->c_viernes?></textarea>
+                            <textarea name="c_viernes" cols="15" rows="5"><?=$Odieta->c_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_sabado" cols="18" rows="5"><?=$Odieta->c_sabado?></textarea>
+                            <textarea name="c_sabado" cols="15" rows="5"><?=$Odieta->c_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_domingo" cols="18" rows="5"><?=$Odieta->c_domingo?></textarea>
+                            <textarea name="c_domingo" cols="15" rows="5"><?=$Odieta->c_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
+                    <!-- /.row -->
                     <div class="row">
                         <div class="col">
                             <label>COLACIÓN</label>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_lunes" cols="18" rows="5"><?=$Odieta->c2_lunes?></textarea>
+                            <textarea name="c3_lunes" cols="15" rows="5"><?=$Odieta->c3_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_martes" cols="18" rows="5"><?=$Odieta->c2_martes?></textarea>
+                            <textarea name="c3_martes" cols="15" rows="5"><?=$Odieta->c3_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_miercoles" cols="18" rows="5"><?=$Odieta->c2_miercoles?></textarea>
+                            <textarea name="c3_miercoles" cols="15" rows="5"><?=$Odieta->c3_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_jueves" cols="18" rows="5"><?=$Odieta->c2_jueves?></textarea>
+                            <textarea name="c3_jueves" cols="15" rows="5"><?=$Odieta->c3_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_viernes" cols="18" rows="5"><?=$Odieta->c2_viernes?></textarea>
+                            <textarea name="c3_viernes" cols="15" rows="5"><?=$Odieta->c3_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_sabado" cols="18" rows="5"><?=$Odieta->c2_sabado?></textarea>
+                            <textarea name="c3_sabado" cols="15" rows="5"><?=$Odieta->c3_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_domingo" cols="18" rows="5"><?=$Odieta->c2_domingo?></textarea>
+                            <textarea name="c3_domingo" cols="15" rows="5"><?=$Odieta->c3_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -170,31 +171,65 @@ $Odieta = $dieta->fetch_object();
                         </div>
 
                         <div class="col">
-                            <textarea name="co_lunes" cols="18" rows="5"><?=$Odieta->co_lunes?></textarea>
+                            <textarea name="co_lunes" cols="15" rows="5"><?=$Odieta->co_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_martes" cols="18" rows="5"><?=$Odieta->co_martes?></textarea>
+                            <textarea name="co_martes" cols="15" rows="5"><?=$Odieta->co_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_miercoles" cols="18" rows="5"><?=$Odieta->co_miercoles?></textarea>
+                            <textarea name="co_miercoles" cols="15" rows="5"><?=$Odieta->co_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_jueves" cols="18" rows="5"><?=$Odieta->co_jueves?></textarea>
+                            <textarea name="co_jueves" cols="15" rows="5"><?=$Odieta->co_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_viernes" cols="18" rows="5"><?=$Odieta->co_viernes?></textarea>
+                            <textarea name="co_viernes" cols="15" rows="5"><?=$Odieta->co_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_sabado" cols="18" rows="5"><?=$Odieta->co_sabado?></textarea>
+                            <textarea name="co_sabado" cols="15" rows="5"><?=$Odieta->co_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_domingo" cols="18" rows="5"><?=$Odieta->co_domingo?></textarea>
+                            <textarea name="co_domingo" cols="15" rows="5"><?=$Odieta->co_domingo?></textarea>
+                        </div>
+                    <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>COLACIÓN</label>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_lunes" cols="15" rows="5"><?=$Odieta->c2_lunes?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_martes" cols="15" rows="5"><?=$Odieta->c2_martes?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_miercoles" cols="15" rows="5"><?=$Odieta->c2_miercoles?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_jueves" cols="15" rows="5"><?=$Odieta->c2_jueves?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_viernes" cols="15" rows="5"><?=$Odieta->c2_viernes?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_sabado" cols="15" rows="5"><?=$Odieta->c2_sabado?></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_domingo" cols="15" rows="5"><?=$Odieta->c2_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -205,66 +240,31 @@ $Odieta = $dieta->fetch_object();
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_lunes" cols="18" rows="5"><?=$Odieta->c3_lunes?></textarea>
+                            <textarea name="c4_lunes" cols="15" rows="5"><?=$Odieta->c4_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_martes" cols="18" rows="5"><?=$Odieta->c3_martes?></textarea>
+                            <textarea name="c4_martes" cols="15" rows="5"><?=$Odieta->c4_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_miercoles" cols="18" rows="5"><?=$Odieta->c3_miercoles?></textarea>
+                            <textarea name="c4_miercoles" cols="15" rows="5"><?=$Odieta->c4_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_jueves" cols="18" rows="5"><?=$Odieta->c3_jueves?></textarea>
+                            <textarea name="c4_jueves" cols="15" rows="5"><?=$Odieta->c4_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_viernes" cols="18" rows="5"><?=$Odieta->c3_viernes?></textarea>
+                            <textarea name="c4_viernes" cols="15" rows="5"><?=$Odieta->c4_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_sabado" cols="18" rows="5"><?=$Odieta->c3_sabado?></textarea>
+                            <textarea name="c4_sabado" cols="15" rows="5"><?=$Odieta->c4_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_domingo" cols="18" rows="5"><?=$Odieta->c3_domingo?></textarea>
-                        </div>
-                    <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col">
-                            <label>COLACIÓN</label>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_lunes" cols="18" rows="5"><?=$Odieta->c4_lunes?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_martes" cols="18" rows="5"><?=$Odieta->c4_martes?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_miercoles" cols="18" rows="5"><?=$Odieta->c4_miercoles?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_jueves" cols="18" rows="5"><?=$Odieta->c4_jueves?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_viernes" cols="18" rows="5"><?=$Odieta->c4_viernes?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_sabado" cols="18" rows="5"><?=$Odieta->c4_sabado?></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_domingo" cols="18" rows="5"><?=$Odieta->c4_domingo?></textarea>
+                            <textarea name="c4_domingo" cols="15" rows="5"><?=$Odieta->c4_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -275,31 +275,31 @@ $Odieta = $dieta->fetch_object();
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_lunes" cols="18" rows="5"><?=$Odieta->ce_lunes?></textarea>
+                            <textarea name="ce_lunes" cols="15" rows="5"><?=$Odieta->ce_lunes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_martes" cols="18" rows="5"><?=$Odieta->ce_martes?></textarea>
+                            <textarea name="ce_martes" cols="15" rows="5"><?=$Odieta->ce_martes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_miercoles" cols="18" rows="5"><?=$Odieta->ce_miercoles?></textarea>
+                            <textarea name="ce_miercoles" cols="15" rows="5"><?=$Odieta->ce_miercoles?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_jueves" cols="18" rows="5"><?=$Odieta->ce_jueves?></textarea>
+                            <textarea name="ce_jueves" cols="15" rows="5"><?=$Odieta->ce_jueves?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_viernes" cols="18" rows="5"><?=$Odieta->ce_viernes?></textarea>
+                            <textarea name="ce_viernes" cols="15" rows="5"><?=$Odieta->ce_viernes?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_sabado" cols="18" rows="5"><?=$Odieta->ce_sabado?></textarea>
+                            <textarea name="ce_sabado" cols="15" rows="5"><?=$Odieta->ce_sabado?></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_domingo" cols="18" rows="5"><?=$Odieta->ce_domingo?></textarea>
+                            <textarea name="ce_domingo" cols="15" rows="5"><?=$Odieta->ce_domingo?></textarea>
                         </div>
                     <!-- /.col -->
                     </div>

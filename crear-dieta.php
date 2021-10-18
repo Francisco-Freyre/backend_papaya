@@ -61,31 +61,31 @@ require_once 'layaut/sidebar.php';
                         </div>
 
                         <div class="col">
-                            <textarea name="d_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="d_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_martes" cols="18" rows="5"></textarea>
+                            <textarea name="d_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="d_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="d_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="d_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="d_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="d_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="d_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -96,65 +96,66 @@ require_once 'layaut/sidebar.php';
                         </div>
 
                         <div class="col">
-                            <textarea name="c_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="c_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_martes" cols="18" rows="5"></textarea>
+                            <textarea name="c_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="c_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="c_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="c_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="c_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="c_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
+                    <!-- /.row -->
                     <div class="row">
                         <div class="col">
                             <label>COLACIÓN</label>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="c3_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_martes" cols="18" rows="5"></textarea>
+                            <textarea name="c3_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="c3_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="c3_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="c3_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="c3_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c2_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="c3_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -165,31 +166,65 @@ require_once 'layaut/sidebar.php';
                         </div>
 
                         <div class="col">
-                            <textarea name="co_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="co_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_martes" cols="18" rows="5"></textarea>
+                            <textarea name="co_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="co_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="co_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="co_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="co_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="co_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="co_domingo" cols="15" rows="5"></textarea>
+                        </div>
+                    <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>COLACIÓN</label>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_lunes" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_martes" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_miercoles" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_jueves" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_viernes" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_sabado" cols="15" rows="5"></textarea>
+                        </div>
+
+                        <div class="col">
+                            <textarea name="c2_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -200,66 +235,31 @@ require_once 'layaut/sidebar.php';
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="c4_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_martes" cols="18" rows="5"></textarea>
+                            <textarea name="c4_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="c4_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="c4_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="c4_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="c4_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="c3_domingo" cols="18" rows="5"></textarea>
-                        </div>
-                    <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col">
-                            <label>COLACIÓN</label>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_lunes" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_martes" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_miercoles" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_jueves" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_viernes" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_sabado" cols="18" rows="5"></textarea>
-                        </div>
-
-                        <div class="col">
-                            <textarea name="c4_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="c4_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>
@@ -270,31 +270,31 @@ require_once 'layaut/sidebar.php';
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_lunes" cols="18" rows="5"></textarea>
+                            <textarea name="ce_lunes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_martes" cols="18" rows="5"></textarea>
+                            <textarea name="ce_martes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_miercoles" cols="18" rows="5"></textarea>
+                            <textarea name="ce_miercoles" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_jueves" cols="18" rows="5"></textarea>
+                            <textarea name="ce_jueves" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_viernes" cols="18" rows="5"></textarea>
+                            <textarea name="ce_viernes" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_sabado" cols="18" rows="5"></textarea>
+                            <textarea name="ce_sabado" cols="15" rows="5"></textarea>
                         </div>
 
                         <div class="col">
-                            <textarea name="ce_domingo" cols="18" rows="5"></textarea>
+                            <textarea name="ce_domingo" cols="15" rows="5"></textarea>
                         </div>
                     <!-- /.col -->
                     </div>

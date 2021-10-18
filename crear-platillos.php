@@ -50,7 +50,7 @@ $platillos = $_platillos->getPlatillos();
                   </div>
                   <div class="form-group">
                     <label for="elaboracion">Tiempo de Elaboracion</label>
-                    <input type="text" class="form-control" name="elaboracion" placeholder="elaboracion" required>
+                    <input type="number" class="form-control" name="elaboracion" placeholder="elaboracion" required>
                   </div>
                   <div class="form-group"><label for="">Imagen del platillo</label></div>
                   <div class="custom-file">
@@ -66,19 +66,19 @@ $platillos = $_platillos->getPlatillos();
                   </div>
                   <div class="form-group">
                     <label for="energianutri">Energia</label>
-                    <input type="text" class="form-control" name="energianutri" placeholder="Energia" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="proteina">Proteina</label>
-                    <input type="text" class="form-control" name="proteina" placeholder="Proteina" required>
+                    <input type="number" class="form-control" name="energianutri" placeholder="Energia" required>
                   </div>
                   <div class="form-group">
                     <label for="carbohidratos">Carbohidratos</label>
-                    <input type="text" class="form-control" name="carbohidratos" placeholder="Carbohidratos" required>
+                    <input type="number" class="form-control" name="carbohidratos" placeholder="Carbohidratos" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="proteina">Proteina</label>
+                    <input type="number" class="form-control" name="proteina" placeholder="Proteina" required>
                   </div>
                   <div class="form-group">
                     <label for="grasas">Grasas</label>
-                    <input type="text" class="form-control" name="grasas" placeholder="Grasas" required>
+                    <input type="number" class="form-control" name="grasas" placeholder="Grasas" required>
                   </div>
                 </div>
                 <!-- /.card-body -->
