@@ -223,40 +223,47 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
             }
         }
-
+        //Actualizar solo las kcal de form_result
         if(isset($_POST['kcal'])){
-            $dieta = $_form_result->dietas($_POST['kcal']);
-            if($dieta->num_rows >= 1){
-                $menu = $dieta->fetch_object();
-                $result = $_form_result->read($_POST['idCliente']);
-                if($result->num_rows == 1){
-                    $update = $_form_result->update($_POST['kcal'], $_POST['idCliente'], $menu->id);
-                    if($update){
-                        $response = array(
-                            'resultado' => true
-                        );
-                        die(json_encode($response));
-                    }else{
-                        $response = array(
-                            'resultado' => false
-                        );
-                        die(json_encode($response));
-                    }
+            $result = $_form_result->read($_POST['idCliente']);
+            if($result->num_rows == 1){
+                $update = $_form_result->update($_POST['kcal'], $_POST['idCliente']);
+                if($update){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
                 }else{
-                    $create = $_form_result->create($_POST['idCliente'], $_POST['kcal'], $menu->id);
-                    if($create){
-                        $response = array(
-                            'resultado' => true
-                        );
-                        die(json_encode($response));
-                    }else{
-                        $response = array(
-                            'resultado' => false
-                        );
-                        die(json_encode($response));
-                    }
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
                 }
             }else{
+                $create = $_form_result->create($_POST['idCliente'], $_POST['kcal'], 0);
+                if($create){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
+                }else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
+            }
+        }
+        //Actualizar solo la dieta de form_result
+        if(isset($_POST['dieta'])){
+            $update = $_form_result->updateDieta($_POST['dieta'], $_POST['idCliente']);
+            if($update){
+                $response = array(
+                    'resultado' => true
+                );
+                die(json_encode($response));
+            }
+            else{
                 $response = array(
                     'resultado' => false
                 );
@@ -391,6 +398,44 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     'resultado' => false
                 );
                 die(json_encode($response));
+            }
+        }
+        //Obtener lista de dietas
+        if(isset($_GET['dietas'])){
+            $_dietas = $_form_result->dietas($_GET['dietas']);
+            if($_dietas->num_rows >= 1){
+                $lista = [];
+                while ($ids = $_dietas->fetch_object()) {
+                    array_push($lista, array(
+                        'id' => $ids->id,
+                        'kcal' => $ids->kcal
+                    ));
+                }
+                die(json_encode(array(
+                    'resultado' => true,
+                    'dietas' => $lista
+                )));
+            }
+            else{
+                die(json_encode(array(
+                    'resultado' => false
+                )));
+            }
+        }
+        //Obtener solo la dieta seleccionada 
+        if(isset($_GET['diet'])){
+            $_dieta = $_form_result->dieta($_GET['diet']);
+            if($_dieta){
+                $dieta = $_dieta->fetch_object();
+                die(json_encode(array(
+                    'resultado' => true,
+                    'dieta' => $dieta
+                )));
+            }
+            else{
+                die(json_encode(array(
+                    'resultado' => false
+                )));
             }
         }
         break;

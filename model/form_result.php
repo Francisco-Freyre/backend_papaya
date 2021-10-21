@@ -17,14 +17,20 @@ class form_result{
         return $response = $this->db->query($sql);
     }
 
-    public function update($kcal, $id_cliente, $id_dieta){
-        $sql = "UPDATE form_result SET kcal = $kcal, dieta_id = $id_dieta WHERE cliente_id = $id_cliente";
+    public function update($kcal, $id_cliente){
+        $sql = "UPDATE form_result SET kcal = $kcal WHERE cliente_id = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function updateDieta($dieta, $id_cliente){
+        $sql = "UPDATE form_result SET dieta_id = $dieta WHERE cliente_id = $id_cliente";
         $response = $this->db->query($sql);
         return $response;
     }
 
     public function dietas($kcal){
-        $sql = "SELECT * FROM dietas WHERE kcal >= $kcal - 50 AND kcal <= $kcal + 50 AND categoria = 'PRUEBA'";
+        $sql = "SELECT * FROM dietas WHERE kcal >= $kcal - 50 AND kcal <= $kcal + 50 AND categoria = 'PRUEBA' ORDER BY kcal DESC";
         return $response = $this->db->query($sql);
     }
 
