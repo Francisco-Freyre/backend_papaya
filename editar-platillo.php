@@ -39,19 +39,22 @@ if($platillos && $platillos->num_rows == 1){
               <form method="POST" action="controller/platilloController.php" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <i class="fas fa-file-signature"></i>
+                    <label for="nombre"> Nombre</label>
                     <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?=$platillo->nombre?>" required>
                   </div>
                   <div class="form-group">
-                    <label for="procedimiento">Procedimiento</label>
+                    <i class="fas fa-list-ul"></i>
+                    <label for="apellidos"> Procedimiento</label>
                     <textarea name="procedimiento" cols="30" rows="10" class="form-control" required><?=$platillo->procedimiento?></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="elaboracion">Tiempo de Elaboracion</label>
+                    <i class="fas fa-history"></i>
+                    <label for="elaboracion"> Tiempo de Elaboracion (Minutos)</label>
                     <input type="number" class="form-control" name="elaboracion" value="<?=$platillo->tiempo_elaboracion?>" placeholder="elaboracion" required>
                   </div>
                   <div class="form-group">
-                    <label for="">Imagen del platillo</label>
+                    <label for=""><i class="far fa-images"></i> Imagen del platillo</label>
                     <br>
                     <img src="<?=$platillo->url_img?>" alt="" height="100" width="100">
                     <label><?=str_replace("uploads/platillos/", "",$platillo->url_img)?></label>
@@ -63,27 +66,33 @@ if($platillos && $platillos->num_rows == 1){
                   <div class="form-group">
                       <br>
                       <br>
-                    <label>APORTE NUTRICIONAL</label>
+                    <label><i class="fab fa-nutritionix"></i> APORTE NUTRICIONAL</label>
                       <br>
-                      <br>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="energianutri">Energia (Kcal)</label>
+                        <input type="number" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="carbohidratos">Carbohidratos (Gr)</label>
+                        <input type="number" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="proteina">Proteina (Gr)</label>
+                        <input type="number" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="grasas">Grasas (Gr)</label>
+                        <input type="number" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="energianutri">Energia</label>
-                    <input type="number" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="carbohidratos">Carbohidratos</label>
-                    <input type="number" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="proteina">Proteina</label>
-                    <input type="number" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="grasas">Grasas</label>
-                    <input type="number" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
-                  </div>
-                  <div class="form-group">
+                    <i class="fas fa-list-ul"></i>
                     <label for="nombre">Ingredientes</label>
                     <input type="text" class="form-control" id="ingrediente" data-id="<?=$_GET['id']?>" placeholder="Escribe tus ingredientes, separalos por coma(,) o enter">
                     <br>

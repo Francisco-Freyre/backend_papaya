@@ -51,7 +51,7 @@ require_once 'layaut/sidebar.php';
                         <option value="Hombre">Hombre</option>
                         <option value="Mujer">Mujer</option>
                     </select>
-                    </div>
+                  </div>
                   <div class="form-group">
                     <label for="emai">Correo</label>
                     <input type="email" class="form-control" name="email" placeholder="Correo" required>

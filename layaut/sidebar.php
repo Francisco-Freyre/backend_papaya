@@ -1,3 +1,10 @@
+<?php
+require_once 'model/categorias_alimentos.php';
+require_once 'model/alimentos.php';
+require_once 'config/db.php';
+$_categorias = new categorias_alimentos();
+$categorias = $_categorias->readAll();
+?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -49,30 +56,6 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-utensils"></i>
-              <p>
-                Platillos
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="platillos.php" class="nav-link">
-                  <i class="nav-icon fas fa-list"></i>
-                  <p> Lista de platillos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="crear-platillos.php" class="nav-link">
-                  <i class="nav-icon fas fa-plus"></i>
-                  <p> Crear platillos</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-running"></i>
               <p>
                 Ejercicios
@@ -116,6 +99,50 @@
                   <p> Crear dietas</p>
                 </a>
               </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-utensil-spoon"></i>
+              <p>
+                Platillos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="platillos.php" class="nav-link">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p> Lista de platillos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="crear-platillos.php" class="nav-link">
+                  <i class="nav-icon fas fa-plus"></i>
+                  <p> Crear platillos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-apple-alt"></i>
+              <p>
+                Alimentos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <?php while($categoria = $categorias->fetch_object()): ?>
+                <li class="nav-item">
+                  <a href="alimentos.php?id=<?=$categoria->id?>" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p><?=$categoria->nombre?></p>
+                  </a>
+                </li>
+              <?php endwhile; ?>
             </ul>
           </li>
         </ul>

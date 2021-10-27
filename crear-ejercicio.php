@@ -35,18 +35,26 @@ $_ejercicios = new ejercicios();
               <!-- form start -->
               <form method="POST" action="controller/ejercicioController.php" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" autocomplete="off" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="descripcion">Descripcion</label>
-                    <textarea name="descripcion" cols="30" rows="5" class="form-control" required></textarea>
-                  </div>
-                  <div class="form-group"><label for="">Imagen del ejercicio</label></div>
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="img">
-                      <label class="custom-file-label" for="customFile">Choose file</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <i class="fas fa-file-signature"></i>
+                        <label for="nombre"> Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" autocomplete="off" required>
+                      </div>
+                      <div class="form-group"><i class="far fa-images"></i> <label for=""> Imagen del ejercicio</label></div>
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="img">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <i class="fas fa-file-alt"></i>
+                        <label for="descripcion"> Descripcion</label>
+                        <textarea name="descripcion" cols="30" rows="5" class="form-control" required></textarea>
+                      </div>
+                    </div>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

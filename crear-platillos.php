@@ -36,7 +36,8 @@ $platillos = $_platillos->getPlatillos();
               <form method="POST" action="controller/platilloController.php" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <i class="fas fa-file-signature"></i>
+                    <label for="nombre"> Nombre</label>
                     <input list="nombres" type="text" class="form-control" name="nombre" placeholder="Nombre" autocomplete="off" required>
                     <datalist id="nombres">
                       <?php while($platillo = $platillos->fetch_object()): ?>
@@ -45,14 +46,16 @@ $platillos = $_platillos->getPlatillos();
                     </datalist>
                   </div>
                   <div class="form-group">
-                    <label for="apellidos">Procedimiento</label>
+                    <i class="fas fa-list-ul"></i>
+                    <label for="apellidos"> Procedimiento</label>
                     <textarea name="procedimiento" cols="30" rows="10" class="form-control" required></textarea>
                   </div>
                   <div class="form-group">
-                    <label for="elaboracion">Tiempo de Elaboracion</label>
+                    <i class="fas fa-history"></i>
+                    <label for="elaboracion"> Tiempo de Elaboracion (Minutos)</label>
                     <input type="number" class="form-control" name="elaboracion" placeholder="elaboracion" required>
                   </div>
-                  <div class="form-group"><label for="">Imagen del platillo</label></div>
+                  <div class="form-group"> <i class="far fa-images"></i> <label for=""> Imagen del platillo</label></div>
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="customFile" name="img">
                       <label class="custom-file-label" for="customFile">Choose file</label>
@@ -60,25 +63,30 @@ $platillos = $_platillos->getPlatillos();
                   <div class="form-group">
                       <br>
                       <br>
-                    <label>APORTE NUTRICIONAL</label>
+                    <label><i class="fab fa-nutritionix"></i> APORTE NUTRICIONAL</label>
                       <br>
-                      <br>
                   </div>
-                  <div class="form-group">
-                    <label for="energianutri">Energia</label>
-                    <input type="number" class="form-control" name="energianutri" placeholder="Energia" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="carbohidratos">Carbohidratos</label>
-                    <input type="number" class="form-control" name="carbohidratos" placeholder="Carbohidratos" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="proteina">Proteina</label>
-                    <input type="number" class="form-control" name="proteina" placeholder="Proteina" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="grasas">Grasas</label>
-                    <input type="number" class="form-control" name="grasas" placeholder="Grasas" required>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="energianutri">Energia (Kcal)</label>
+                        <input type="number" class="form-control" name="energianutri" step="0.01" placeholder="Energia" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="carbohidratos">Carbohidratos (Gr)</label>
+                        <input type="number" class="form-control" name="carbohidratos" step="0.01" placeholder="Carbohidratos" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="proteina">Proteina (Gr)</label>
+                        <input type="number" class="form-control" name="proteina" step="0.01" placeholder="Proteina" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="grasas">Grasas (Gr)</label>
+                        <input type="number" class="form-control" name="grasas" step="0.01" placeholder="Grasas" required>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- /.card-body -->

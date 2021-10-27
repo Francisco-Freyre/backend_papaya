@@ -37,23 +37,32 @@ if($ejercicios && $ejercicios->num_rows == 1){
               <!-- form start -->
               <form method="POST" action="controller/ejercicioController.php" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?=$ejer->nombre?>" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="descripcion">Descripcion</label>
-                    <textarea name="descripcion" cols="30" rows="5" class="form-control" required><?=$ejer->descripcion?></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="">Imagen del platillo</label>
-                    <br>
-                    <img src="<?=$ejer->url_img?>" alt="" height="100" width="100">
-                    <label><?=str_replace("uploads/ejercicios/", "",$ejer->url_img)?></label>
-                  </div>
-                  <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="img">
-                      <label class="custom-file-label" for="customFile">Choose file</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <i class="fas fa-file-signature"></i>
+                        <label for="nombre"> Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?=$ejer->nombre?>" required>
+                      </div>
+                      <div class="form-group">
+                        <i class="far fa-images"></i>
+                        <label for=""> Imagen del platillo</label>
+                        <br>
+                        <img src="<?=$ejer->url_img?>" alt="" height="100" width="100">
+                        <label><?=str_replace("uploads/ejercicios/", "",$ejer->url_img)?></label>
+                      </div>
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="img">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <i class="fas fa-file-alt"></i>
+                        <label for="descripcion"> Descripcion</label>
+                        <textarea name="descripcion" cols="30" rows="5" class="form-control" required><?=$ejer->descripcion?></textarea>
+                      </div>
+                    </div>
                   </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
