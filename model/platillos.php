@@ -16,16 +16,6 @@ class platillos {
         }
     }
 
-    public function create_aporte($id, $energia, $proteinas, $carbo, $grasas, $sodio, $potasio, $calcio, $hierro, $va, $ve, $vd, $vc, $acido){
-        $sql = "INSERT INTO aporte_nutricional VALUES(NULL, $id, '$energia', '$proteinas', '$carbo', '$grasas', '$sodio', '$potasio', '$calcio', '$hierro', '$va', '$ve', '$vd', '$vc', '$acido');";
-        $save = $this->db->query($sql);
-        if($save){
-            return $save;
-        }else{
-            return $save;
-        }
-    }
-
     public function create_ingre($platilloid, $nombre){
         $sql = "INSERT INTO ingredientes VALUES(NULL, $platilloid, '$nombre');";
         $save = $this->db->query($sql);
@@ -84,20 +74,8 @@ class platillos {
         return $response;
     }
 
-    public function getAporte($id){
-        $sql = "SELECT * FROM aporte_nutricional WHERE platillo_id = $id";
-        $response = $this->db->query($sql);
-
-        if($response){
-            return $response;
-        }
-        else{
-            return $response;
-        }
-    }
-
     public function getIngredientes($id){
-        $sql = "SELECT * FROM ingredientes WHERE platillo_id = $id";
+        $sql = "SELECT * FROM ingredientes2 WHERE platillo_id = $id";
         $response = $this->db->query($sql);
 
         if($response){
@@ -115,20 +93,20 @@ class platillos {
         return $response;
     }
 
-    public function editPlatillo($id, $nombre, $proce, $elabo, $energia, $prote, $carbo, $grasa, $img){
+    public function editPlatillo($id, $nombre, $proce, $elabo, $img){
         if($img != ""){
-            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa', url_img = '$img' WHERE id = $id";
+            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', url_img = '$img' WHERE id = $id";
         }
         else{
-            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo', energia = '$energia', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa' WHERE id = $id";
+            $sql = "UPDATE platillos SET nombre = '$nombre', procedimiento = '$proce', tiempo_elaboracion = '$elabo' WHERE id = $id";
         }
 
         $response = $this->db->query($sql);
         return $response; 
     }
 
-    public function editarAporte($id, $ener, $prote, $carbo, $grasa, $sodio, $pota, $cal, $hie, $va, $ve, $vc, $vd, $af){
-        $sql = "UPDATE aporte_nutricional SET energia = '$ener', proteinas = '$prote', carbohidratos = '$carbo', grasas = '$grasa', sodio = '$sodio', potasio = '$pota', calcio = '$cal', hierro = '$hie', vitamina_a = '$va', vitamina_e = '$ve', vitamina_c = '$vc', vitamina_d = '$vd', acido_folico = '$af' WHERE platillo_id = $id";
+    public function editarAporte($id, $ener, $prote, $carbo, $grasa){
+        $sql = "UPDATE platillos SET energia = '$ener', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa' WHERE id = $id";
         $response = $this->db->query($sql);
         return $response;
     }

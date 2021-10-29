@@ -3,8 +3,13 @@ require_once 'config/parameters.php';
 require_once 'layaut/nav.php';
 require_once 'layaut/sidebar.php';
 require_once 'model/platillos.php';
+require_once 'model/alimentos.php';
+require_once 'model/categorias_alimentos.php';
 require_once 'config/db.php';
 $_platillos = new platillos();
+$_alimentos = new alimentos();
+$_categorias_alimentos = new categorias_alimentos();
+$categorias = $_categorias_alimentos->readAll();
 $platillos = $_platillos->getPlatillo($_GET['id']);
 if($platillos && $platillos->num_rows == 1){
     $platillo = $platillos->fetch_object();
@@ -73,38 +78,22 @@ if($platillos && $platillos->num_rows == 1){
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="energianutri">Energia (Kcal)</label>
-                        <input type="number" class="form-control" name="energianutri" value="<?=$platillo->energia?>" placeholder="Energia" required>
+                        <input type="number" class="form-control" value="<?=$platillo->energia?>" placeholder="Energia" readonly>
                       </div>
                       <div class="form-group">
                         <label for="carbohidratos">Carbohidratos (Gr)</label>
-                        <input type="number" class="form-control" name="carbohidratos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" required>
+                        <input type="number" class="form-control" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" readonly>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="proteina">Proteina (Gr)</label>
-                        <input type="number" class="form-control" name="proteina" value="<?=$platillo->proteina?>" placeholder="Proteina" required>
+                        <input type="number" class="form-control" value="<?=$platillo->proteina?>" placeholder="Proteina" readonly>
                       </div>
                       <div class="form-group">
                         <label for="grasas">Grasas (Gr)</label>
-                        <input type="number" class="form-control" name="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" required>
+                        <input type="number" class="form-control" value="<?=$platillo->grasas?>" placeholder="Grasas" readonly>
                       </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <i class="fas fa-list-ul"></i>
-                    <label for="nombre">Ingredientes</label>
-                    <input type="text" class="form-control" id="ingrediente" data-id="<?=$_GET['id']?>" placeholder="Escribe tus ingredientes, separalos por coma(,) o enter">
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12" id="chipss">
-                            <?php while($ingrediente = $ingredientes->fetch_object()): ?>
-                                <div class="chip" id="aroma<?=$ingrediente->id?>">
-                                    <?=$ingrediente->nombre?>
-                                    <span class="closebtn" data-id="<?=$ingrediente->id?>">&times;</span>
-                                </div>
-                            <?php endwhile; ?>
-                        </div>
                     </div>
                   </div>
                 </div>
@@ -115,6 +104,116 @@ if($platillos && $platillos->num_rows == 1){
                   <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
+            </div>
+
+            <div class="card card-primary">
+              <div class="card-header">
+                  <i class="fas fa-list-ul"></i>
+                  <label for="nombre">Ingredientes</label>
+              </div>
+              <div class="card-body">
+                  <div class="form-group">
+                    <form id="enviar">
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fas fa-sort-numeric-up-alt"></i>
+                                <label for="unidad"> Categoria de alimentos</label>
+                                <select class="custom-select" name="categoria" id="categoria" required>
+                                    <option value="Sin opcion" selected>Selecciona una categoria</option>
+                                    <?php while($categoria = $categorias->fetch_object()): ?>
+                                      <option value="<?=$categoria->id?>"><?=$categoria->nombre?></option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fas fa-sort-numeric-up-alt"></i>
+                                <label for="alimento_id"> Alimentos</label>
+                                <select class="custom-select" name="alimento_id" id="alimento_id" required>
+                                    <option value="Sin opcion" selected>Selecciona un alimento</option>
+                                </select>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1">
+                          <div class="form-group clearfix">
+                            <label for="">Cambiar</label>
+                            <br>
+                            <div class="icheck-primary d-inline">
+                              <input type="checkbox" name="cambiar" id="cambiar" value="1" checked>
+                              <label for="cambiar">
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="nombre">Unidad</label>
+                                <input type="text" class="form-control" name="unidad" id="unidad" placeholder="Unidad" autocomplete="off" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="nombre">Cantidad</label>
+                                <input type="text" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad" autocomplete="off" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="nombre">Equivalente</label>
+                                <input type="text" class="form-control" name="equivalente" id="equivalente" placeholder="Equivalente" autocomplete="off" required>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <div class="form-group mt-4">
+                            <input class="d-none" type="text" name="platillo_id" id="platillo_id" value="<?=$_GET['id']?>">
+                            <input class="d-none" type="text" name="accion" id="accion" value="crear">
+                            <button type="submit" class="btn btn-info">Agregar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="row">
+                      <table class="table table-bordered table-striped">
+                          <thead>
+                              <tr>
+                                  <th>Cambiar</th>
+                                  <th>Nombre</th>
+                                  <th>Cantidad</th>
+                                  <th>Kcal</th>
+                                  <th>Carbohidratos</th>
+                                  <th>Proteinas</th>
+                                  <th>Lipidos</th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody id="tabla">
+                            <?php while($ingrediente = $ingredientes->fetch_object()): ?>
+                            <?php  
+                              $alimento = $_alimentos->readAlimento($ingrediente->alimento_id);
+                              $ali = $alimento->fetch_object();
+                            ?>
+                              <tr>
+                                  <td><?=$ingrediente->cambiar == 0 ? 'No' : 'Si'?></td>
+                                  <td><?=$ali->nombre?></td>
+                                  <td><?=$ingrediente->equivalente?></td>
+                                  <td><?=$ingrediente->energia?></td>
+                                  <td><?=$ingrediente->carbohidratos?></td>
+                                  <td><?=$ingrediente->proteina?></td>
+                                  <td><?=$ingrediente->lipidos?></td>
+                                  <td> <a class="btn btn-danger cerrar" data-id="<?=$ingrediente->id?>">Borrar</a></td>
+                              </tr>
+                            <?php endwhile; ?>
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+              </div>
             </div>
             <!-- /.card -->
           </div>

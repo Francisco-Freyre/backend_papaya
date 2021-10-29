@@ -89,7 +89,7 @@ $categorias = $_categorias->readAll();
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-2">
+                      <div class="col-md-1">
                         <div class="form-group mt-4">
                           <input class="d-none" type="text" name="platillo_id" id="platillo_id" value="<?=$_GET['id']?>">
                           <input class="d-none" type="text" name="accion" id="accion" value="crear">

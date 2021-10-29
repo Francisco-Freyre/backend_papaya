@@ -60,34 +60,6 @@ $platillos = $_platillos->getPlatillos();
                       <input type="file" class="custom-file-input" id="customFile" name="img">
                       <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
-                  <div class="form-group">
-                      <br>
-                      <br>
-                    <label><i class="fab fa-nutritionix"></i> APORTE NUTRICIONAL</label>
-                      <br>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="energianutri">Energia (Kcal)</label>
-                        <input type="number" class="form-control" name="energianutri" step="0.01" placeholder="Energia" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="carbohidratos">Carbohidratos (Gr)</label>
-                        <input type="number" class="form-control" name="carbohidratos" step="0.01" placeholder="Carbohidratos" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="proteina">Proteina (Gr)</label>
-                        <input type="number" class="form-control" name="proteina" step="0.01" placeholder="Proteina" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="grasas">Grasas (Gr)</label>
-                        <input type="number" class="form-control" name="grasas" step="0.01" placeholder="Grasas" required>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

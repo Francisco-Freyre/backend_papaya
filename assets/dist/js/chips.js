@@ -80,17 +80,18 @@ $(document).ready(function (){
             cache: false,
             success: function(data){
                 let resultado = data;
+                console.log(resultado);
                 let cambiar = resultado.cambiar == 0 ? 'No' : 'Si';
                 let renglon = `
                 <tr>
                     <td>`+cambiar+`</td>
                     <td>`+resultado.nombre+`</td>
-                    <td>`+resultado.equivalente+`</td>
+                    <td>`+resultado.result+`</td>
                     <td>`+resultado.kcal+`</td>
                     <td>`+resultado.carbohidratos+`</td>
                     <td>`+resultado.proteinas+`</td>
                     <td>`+resultado.lipidos+`</td>
-                    <td> <a class="btn btn-danger" href="#">Borrarr</a></td>
+                    <td> <a class="btn btn-danger cerrar" data-id=`+resultado.id+`>Borrar</a></td>
                 </tr>
                 `;
                 $('#tabla').append(renglon);
@@ -101,20 +102,21 @@ $(document).ready(function (){
         });
     });
 
-    $(document).on('click', '.closebtn',function(){
+    $(document).on('click', '.cerrar',function(){
+        boton = $(this);
         let id = $(this).data('id');
         $.ajax({
             type: 'GET',
-            url: 'controller/platilloController.php',
-            data: 'accion=borrar-platillo&&id='+id,
+            url: 'controller/ingredientesController.php',
+            data: 'accion=borrar&id='+id,
             dataType: 'json',
             success:function(respuesta){
                 let resp = respuesta;
-                if(resp.respuesta === "exito"){
-                    $('#aroma'+id).hide();
+                if(resp.resultado){
+                        boton.parent().parent().remove();
                 }
-                else if(resp.respuesta === "error"){
-                    alert("No se pudo eliminar el aroma");
+                else{
+                    alert("No se pudo eliminar el ingrediente");
                 }
             },
             error:function(respuesta){

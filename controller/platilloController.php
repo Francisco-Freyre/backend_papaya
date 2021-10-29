@@ -18,11 +18,11 @@ if(isset($_POST)){
                 move_uploaded_file($file['tmp_name'], '../uploads/platillos/'.$filename);
                 $url_img = 'uploads/platillos/'.$filename;
             }
-            $id = $_platillos->create($_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $url_img);
+            $id = $_platillos->create($_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], 0, 0, 0, 0, $url_img);
             if($id != false){
                 echo "<script>";
                 echo "alert('Platillo creado correctamente, agrega los ingredientes y habras terminado');";
-                echo "window.location.replace('../ingredientes.php?id=$id');";
+                echo "window.location.replace('../editar-platillo.php?id=$id');";
                 echo "</script>";
             }
             else{
@@ -64,10 +64,10 @@ if(isset($_POST)){
                     move_uploaded_file($file['tmp_name'], '../uploads/platillos/'.$filename);
                     $url_img = 'uploads/platillos/'.$filename;
                 }
-                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], $url_img);
+                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $url_img);
             }
             else{
-                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], $_POST['energianutri'], $_POST['proteina'], $_POST['carbohidratos'], $_POST['grasas'], '');
+                $edit = $_platillos->editPlatillo($_POST['id'], $_POST['nombre'], $_POST['procedimiento'], $_POST['elaboracion'], '');
             }
             
             if($edit){

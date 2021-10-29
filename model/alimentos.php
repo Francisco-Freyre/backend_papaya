@@ -44,6 +44,18 @@ class alimentos{
         }
     }
 
+    public function readIngrediente($id){
+        $sql = "SELECT * FROM ingredientes2 WHERE id = $id";
+        $response = $this->db->query($sql);
+
+        if($response){
+            return $response;
+        }
+        else{
+            return $response;
+        }
+    }
+
     // Funcion para leer una sola categoria de alimentos, retorna el resultado de la consulta o falso
     public function readOne($id){
         $sql = "SELECT * FROM categorias_alimentos WHERE id = $id";
@@ -61,7 +73,6 @@ class alimentos{
     public function create($nombre, $unidad, $cantidad, $id_categoria){
         $sql = "INSERT INTO alimentos VALUES(NULL, '$id_categoria', '$nombre', '$unidad', '$cantidad');";
         $save = $this->db->query($sql);
-        
         $result = false;
         if($save){
             $result = true;
@@ -73,7 +84,11 @@ class alimentos{
     public function crearIngrediente($platillo_id, $alimento_id, $equivalente, $cambiar, $energia, $carbohidratos, $proteina, $lipidos){
         $sql = "INSERT INTO ingredientes2 VALUES(NULL, $platillo_id, $alimento_id, $equivalente, $cambiar, $energia, $carbohidratos, $proteina, $lipidos);";
         $save = $this->db->query($sql);
-        return $save;
+        if($save){
+            return $this->db->insert_id;
+        }else{
+            return $save;
+        }
     }
 
     // Hasta aqui las funciones de esta tabla
@@ -92,9 +107,9 @@ class alimentos{
         }
     }
 
-    // Funcion para eliminar un cliente, retorna el resultado de la consulta o falso
+    // Funcion para eliminar un ingrediente, retorna el resultado de la consulta o falso
     public function delete($id){
-        $sql = "DELETE FROM clientes WHERE id = $id";
+        $sql = "DELETE FROM ingredientes2 WHERE id = $id";
         $response = $this->db->query($sql);
         return $response;
     }
