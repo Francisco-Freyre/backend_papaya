@@ -68,7 +68,7 @@ $categoria = $categorias->fetch_object();
                             <div class="form-group">
                                 <i class="fas fa-sort-numeric-up-alt"></i>
                                 <label for="cantidad"> Cantidad</label>
-                                <input type="number" class="form-control" name="cantidad" placeholder="Cantidad" autocomplete="off" required>
+                                <input type="number" class="form-control" name="cantidad" step="0.01" placeholder="Cantidad" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="col-md-6">
