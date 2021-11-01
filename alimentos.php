@@ -8,6 +8,16 @@ $categorias = $_categorias->readOne($_GET['id']);
 $alimentos = $_alimentos->readCategoria($_GET['id']);
 $categoria = $categorias->fetch_object();
 ?>
+  <script type="text/javascript">
+    function ConfirmDelete(){
+      let respuesta = confirm('¿Estas seguro que deseas eliminar este alimento?');
+      if(respuesta){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -58,6 +68,7 @@ $categoria = $categorias->fetch_object();
                                     <option value="vaso">Vaso</option>
                                     <option value="disparos">Disparos</option>
                                     <option value="pieza">Pieza</option>
+                                    <option value="lata">Lata</option>
                                     <option value="rebanadas">Rebanadas</option>
                                 </select>
                             </div>
@@ -95,7 +106,7 @@ $categoria = $categorias->fetch_object();
                                             <th>Nombre</th>
                                             <th>Unidad</th>
                                             <th>Cantidad</th>
-                                            <th>Acciones</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,7 +115,7 @@ $categoria = $categorias->fetch_object();
                                                 <td><?=$alimento->nombre?></td>
                                                 <td><?=$alimento->unidad?></td>
                                                 <td><?=$alimento->cantidad?></td>
-                                                <td> <a class="btn btn-warning" href="editar-platillo.php?id=<?=$alimento->id?>">Editar</a> | <a class="btn btn-danger" href="controller/platilloController.php?accion=borrar-platillos&id=<?=$alimento->id?>" onclick="return ConfirmDelete()">Eliminar</a></td>
+                                                <td> <a class="btn btn-danger" href="controller/alimentosController.php?accion=borrar&cat=<?=$_GET['id']?>&id=<?=$alimento->id?>" onclick="return ConfirmDelete()">Eliminar</a></td>
                                             </tr>
                                         <?php endwhile; ?>
                                     </tbody>

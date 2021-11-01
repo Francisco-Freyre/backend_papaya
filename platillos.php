@@ -9,7 +9,7 @@ $platillos = $_platillos->getPlatillos();
 ?>
   <script type="text/javascript">
     function ConfirmDelete(){
-      let respuesta = confirm('¿Estas seguro que deseas eliminar el platillo?');
+      let respuesta = confirm('¿Estas seguro que deseas eliminar este platillo?');
       if(respuesta){
         return true;
       }else{

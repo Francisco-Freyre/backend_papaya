@@ -113,5 +113,11 @@ class alimentos{
         $response = $this->db->query($sql);
         return $response;
     }
+
+    public function deletealimento($id){
+        $sql = "DELETE FROM alimentos WHERE id = $id";
+        $response = $this->db->query($sql);
+        return $response;
+    }
 }
 ?>

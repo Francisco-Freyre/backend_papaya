@@ -63,16 +63,16 @@ if(isset($_GET['accion'])){
     }
 
     if($_GET['accion'] == 'borrar'){
-        $resultado = $clientes->delete($_GET['id']);
+        $resultado = $_alimentos->deletealimento($_GET['id']);
         if($resultado){
             echo "<script>";
-            echo "alert('Cliente eliminado!!');";
-            echo "window.location.replace('../lista-clientes.php');";
+            echo "alert('Alimento eliminado!!');";
+            echo "window.location.replace('../alimentos.php?id=".$_GET['cat']."');";
             echo "</script>";
         }else{
             echo "<script>";
             echo "alert('No fue posible eilimar, intente de nuevo');";
-            echo "window.location.replace('../lista-clientes.php');";
+            echo "window.location.replace('../alimentos.php?id=".$_GET['cat']."');";
             echo "</script>";
         }
     }
