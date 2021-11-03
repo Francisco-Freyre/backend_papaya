@@ -69,6 +69,7 @@ $categoria = $categorias->fetch_object();
                                     <option value="disparos">Disparos</option>
                                     <option value="pieza">Pieza</option>
                                     <option value="lata">Lata</option>
+                                    <option value="hojas">Hojas</option>
                                     <option value="rebanadas">Rebanadas</option>
                                 </select>
                             </div>
