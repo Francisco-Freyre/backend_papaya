@@ -6,6 +6,7 @@ $_alimentos = new alimentos();
 $_categorias = new categorias_alimentos();
 $categorias = $_categorias->readOne($_GET['id']);
 $alimentos = $_alimentos->readCategoria($_GET['id']);
+$alimentos2 = $_alimentos->readCategoria($_GET['id']);
 $categoria = $categorias->fetch_object();
 ?>
   <script type="text/javascript">
@@ -51,7 +52,12 @@ $categoria = $categorias->fetch_object();
                             <div class="form-group">
                                 <i class="fas fa-file-signature"></i>
                                 <label for="nombre"> Nombre</label>
-                                <input type="text" class="form-control" name="nombre" placeholder="Alimento" autocomplete="off" required>
+                                <input type="text" list="nombres" class="form-control" name="nombre" placeholder="Alimento" autocomplete="off" required>
+                                <datalist id="nombres">
+                                  <?php while($alim = $alimentos2->fetch_object()): ?>
+                                    <option value="<?=$alim->nombre?>"></option>
+                                  <?php endwhile; ?>
+                                </datalist>
                             </div>
                         </div>
                         <div class="col-md-6">
