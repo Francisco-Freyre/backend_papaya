@@ -105,6 +105,12 @@ class platillos {
         return $response; 
     }
 
+    public function editPlatilloNombre($id, $nombre){
+        $sql = "UPDATE platillos SET nombre = '$nombre' WHERE id = $id";
+        $response = $this->db->query($sql);
+        return $response; 
+    }
+
     public function editarAporte($id, $ener, $prote, $carbo, $grasa){
         $sql = "UPDATE platillos SET energia = '$ener', proteina = '$prote', carbohidratos = '$carbo', grasas = '$grasa' WHERE id = $id";
         $response = $this->db->query($sql);

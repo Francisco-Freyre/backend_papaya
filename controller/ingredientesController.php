@@ -9,6 +9,7 @@ if(isset($_POST['accion'])){
     if($_POST['accion'] == 'crear'){
         $platillos = $_platillos->getPlatillo($_POST['platillo_id']);
         $platillo = $platillos->fetch_object();
+        $nombrePlatillo = explode(' - ', $platillo->nombre);
         $alimentos = $_alimentos->readAlimento($_POST['alimento_id']);
         if($alimentos){
             $alimento = $alimentos->fetch_object();
@@ -21,6 +22,8 @@ if(isset($_POST['accion'])){
                 $proteinas = round($categoria->proteinas * $_POST['equivalente']);
                 $lipidos = round($categoria->lipidos * $_POST['equivalente']);
                 $cambiar = isset($_POST['cambiar']) ? $_POST['cambiar'] : 0;
+                $energiaTotal = $platillo->energia + $kcal;
+                $name = $_platillos->editPlatilloNombre($platillo->id, $nombrePlatillo[0].' - '.$energiaTotal);
                 $resp = $_platillos->editarAporte($_POST['platillo_id'], $platillo->energia + $kcal, $platillo->proteina + $proteinas, $platillo->carbohidratos + $carbo, $platillo->grasas + $lipidos);
                 $response = $_alimentos->crearIngrediente($_POST['platillo_id'], $alimento->id, $resultado, $cambiar, $kcal, $carbo, $proteinas, $lipidos);
                 if($response != false){
@@ -62,6 +65,9 @@ if(isset($_GET['accion'])){
         $ingredi = $ingrediente->fetch_object();
         $platillo = $_platillos->getPlatillo($ingredi->platillo_id);
         $pla = $platillo->fetch_object();
+        $nombrePlatillo = explode(' - ', $pla->nombre);
+        $energiaTotal = $pla->energia - $ingredi->energia;
+        $name = $_platillos->editPlatilloNombre($pla->id, $nombrePlatillo[0].' - '.$energiaTotal);
         $updated = $_platillos->editarAporte($ingredi->platillo_id, $pla->energia - $ingredi->energia, $pla->proteina - $ingredi->proteina, $pla->carbohidratos - $ingredi->carbohidratos, $pla->grasas - $ingredi->lipidos);
         $deleted = $_alimentos->delete($_GET['id']);
         if($deleted && $updated){
