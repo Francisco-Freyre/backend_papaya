@@ -42,7 +42,8 @@ if(isset($_POST['accion'])){
                         'totalKcal' => $platillo->energia + $kcal,
                         'totalCarbo' => $platillo->carbohidratos + $carbo,
                         'totalProte' => $platillo->proteina + $proteinas,
-                        'totalGrasas' => $platillo->grasas + $lipidos
+                        'totalGrasas' => $platillo->grasas + $lipidos,
+                        'platillo' => $nombrePlatillo[0].' - '.$energiaTotal
                     )));
                 }
                 else{
@@ -76,7 +77,8 @@ if(isset($_GET['accion'])){
         $deleted = $_alimentos->delete($_GET['id']);
         if($deleted && $updated){
             die(json_encode(array(
-                'resultado' => true
+                'resultado' => true,
+                'platillo' => $nombrePlatillo[0].' - '.$energiaTotal
             )));
         }else{
             die(json_encode(array(

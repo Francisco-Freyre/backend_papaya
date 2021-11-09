@@ -46,7 +46,7 @@ if($platillos && $platillos->num_rows == 1){
                   <div class="form-group">
                     <i class="fas fa-file-signature"></i>
                     <label for="nombre"> Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?=$platillo->nombre?>" required>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?=$platillo->nombre?>" required>
                   </div>
                   <div class="form-group">
                     <i class="fas fa-list-ul"></i>
@@ -120,7 +120,7 @@ if($platillos && $platillos->num_rows == 1){
                                 <i class="fas fa-sort-numeric-up-alt"></i>
                                 <label for="unidad"> Categoria de alimentos</label>
                                 <select class="custom-select" name="categoria" id="categoria" required>
-                                    <option value="Sin opcion" selected>Selecciona una categoria</option>
+                                    <option value="0" selected>Selecciona una categoria</option>
                                     <?php while($categoria = $categorias->fetch_object()): ?>
                                       <option value="<?=$categoria->id?>"><?=$categoria->nombre?></option>
                                     <?php endwhile; ?>
@@ -132,7 +132,7 @@ if($platillos && $platillos->num_rows == 1){
                                 <i class="fas fa-sort-numeric-up-alt"></i>
                                 <label for="alimento_id"> Alimentos</label>
                                 <select class="custom-select" name="alimento_id" id="alimento_id" required>
-                                    <option value="Sin opcion" selected>Selecciona un alimento</option>
+                                    <option value="0" selected>Selecciona un alimento</option>
                                 </select>
                             </div>
                         </div>

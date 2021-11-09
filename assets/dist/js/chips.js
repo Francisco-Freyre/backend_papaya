@@ -80,7 +80,6 @@ $(document).ready(function (){
             cache: false,
             success: function(data){
                 let resultado = data;
-                console.log(resultado);
                 let cambiar = resultado.cambiar == 0 ? 'No' : 'Si';
                 let renglon = `
                 <tr>
@@ -99,9 +98,12 @@ $(document).ready(function (){
                 $('#carbos').val(resultado.totalCarbo);
                 $('#protes').val(resultado.totalProte);
                 $('#grasas').val(resultado.totalGrasas);
+                $('#nombre').val(resultado.platillo);
                 $('#unidad').val('');
                 $('#cantidad').val('');
                 $('#equivalente').val('');
+                $('#alimento_id option[value="0"]').attr('selected', true);
+                $('#categoria').val('0');
             },
             error: function(data){
                 console.log(data);
@@ -132,6 +134,7 @@ $(document).ready(function (){
                     $('#carbos').val(carbos - carbo);
                     $('#protes').val(protes - prote);
                     $('#grasas').val(grasas - grasa);
+                    $('#nombre').val(resp.platillo);
                     boton.parent().parent().remove();
                 }
                 else{
