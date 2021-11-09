@@ -87,14 +87,21 @@ $(document).ready(function (){
                     <td>`+cambiar+`</td>
                     <td>`+resultado.nombre+`</td>
                     <td>`+resultado.result+`</td>
-                    <td>`+resultado.kcal+`</td>
-                    <td>`+resultado.carbohidratos+`</td>
-                    <td>`+resultado.proteinas+`</td>
-                    <td>`+resultado.lipidos+`</td>
+                    <td class="kcal">`+resultado.kcal+`</td>
+                    <td class="carbo">`+resultado.carbohidratos+`</td>
+                    <td class="prote">`+resultado.proteinas+`</td>
+                    <td class="grasa">`+resultado.lipidos+`</td>
                     <td> <a class="btn btn-danger cerrar" data-id=`+resultado.id+`>Borrar</a></td>
                 </tr>
                 `;
                 $('#tabla').append(renglon);
+                $('#energia').val(resultado.totalKcal);
+                $('#carbos').val(resultado.totalCarbo);
+                $('#protes').val(resultado.totalProte);
+                $('#grasas').val(resultado.totalGrasas);
+                $('#unidad').val('');
+                $('#cantidad').val('');
+                $('#equivalente').val('');
             },
             error: function(data){
                 console.log(data);
@@ -113,7 +120,19 @@ $(document).ready(function (){
             success:function(respuesta){
                 let resp = respuesta;
                 if(resp.resultado){
-                        boton.parent().parent().remove();
+                    let kcal = boton.parent().parent().children('.kcal').text();
+                    let carbo = boton.parent().parent().children('.carbo').text();
+                    let prote = boton.parent().parent().children('.prote').text();
+                    let grasa = boton.parent().parent().children('.grasa').text();
+                    let energia = $('#energia').val();
+                    let carbos = $('#carbos').val();
+                    let protes = $('#protes').val();
+                    let grasas = $('#grasas').val();
+                    $('#energia').val(energia - kcal);
+                    $('#carbos').val(carbos - carbo);
+                    $('#protes').val(protes - prote);
+                    $('#grasas').val(grasas - grasa);
+                    boton.parent().parent().remove();
                 }
                 else{
                     alert("No se pudo eliminar el ingrediente");

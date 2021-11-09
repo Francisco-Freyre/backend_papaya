@@ -21,7 +21,7 @@ class alimentos{
 
     // Funcion para leer todos los alimentos segun la categoria
     public function readCategoria($id_categoria){
-        $sql = "SELECT * FROM alimentos WHERE categoria_id = $id_categoria";
+        $sql = "SELECT * FROM alimentos WHERE categoria_id = $id_categoria ORDER BY nombre";
         $response = $this->db->query($sql);
 
         if($response){

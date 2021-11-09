@@ -78,21 +78,21 @@ if($platillos && $platillos->num_rows == 1){
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="energianutri">Energia (Kcal)</label>
-                        <input type="number" class="form-control" value="<?=$platillo->energia?>" placeholder="Energia" readonly>
+                        <input type="number" class="form-control" id="energia" value="<?=$platillo->energia?>" placeholder="Energia" readonly>
                       </div>
                       <div class="form-group">
                         <label for="carbohidratos">Carbohidratos (Gr)</label>
-                        <input type="number" class="form-control" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" readonly>
+                        <input type="number" class="form-control" id="carbos" value="<?=$platillo->carbohidratos?>" placeholder="Carbohidratos" readonly>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="proteina">Proteina (Gr)</label>
-                        <input type="number" class="form-control" value="<?=$platillo->proteina?>" placeholder="Proteina" readonly>
+                        <input type="number" class="form-control" id="protes" value="<?=$platillo->proteina?>" placeholder="Proteina" readonly>
                       </div>
                       <div class="form-group">
                         <label for="grasas">Grasas (Gr)</label>
-                        <input type="number" class="form-control" value="<?=$platillo->grasas?>" placeholder="Grasas" readonly>
+                        <input type="number" class="form-control" id="grasas" value="<?=$platillo->grasas?>" placeholder="Grasas" readonly>
                       </div>
                     </div>
                   </div>
@@ -202,10 +202,10 @@ if($platillos && $platillos->num_rows == 1){
                                   <td><?=$ingrediente->cambiar == 0 ? 'No' : 'Si'?></td>
                                   <td><?=$ali->nombre?></td>
                                   <td><?=$ingrediente->equivalente?></td>
-                                  <td><?=$ingrediente->energia?></td>
-                                  <td><?=$ingrediente->carbohidratos?></td>
-                                  <td><?=$ingrediente->proteina?></td>
-                                  <td><?=$ingrediente->lipidos?></td>
+                                  <td class="kcal"><?=$ingrediente->energia?></td>
+                                  <td class="carbo"><?=$ingrediente->carbohidratos?></td>
+                                  <td class="prote"><?=$ingrediente->proteina?></td>
+                                  <td class="grasa"><?=$ingrediente->lipidos?></td>
                                   <td> <a class="btn btn-danger cerrar" data-id="<?=$ingrediente->id?>">Borrar</a></td>
                               </tr>
                             <?php endwhile; ?>

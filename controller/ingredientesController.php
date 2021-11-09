@@ -16,7 +16,7 @@ if(isset($_POST['accion'])){
             $categorias = $_alimentos->readOne($alimento->categoria_id);
             if($categorias){
                 $categoria = $categorias->fetch_object();
-                $resultado = round($alimento->cantidad * $_POST['equivalente']);
+                $resultado = $alimento->cantidad * $_POST['equivalente'];
                 $kcal = round($categoria->kcal * $_POST['equivalente']);
                 $carbo = round($categoria->carbohidratos * $_POST['equivalente']);
                 $proteinas = round($categoria->proteinas * $_POST['equivalente']);
@@ -39,6 +39,10 @@ if(isset($_POST['accion'])){
                         'carbohidratos' => $carbo,
                         'proteinas' => $proteinas,
                         'lipidos' => $lipidos,
+                        'totalKcal' => $platillo->energia + $kcal,
+                        'totalCarbo' => $platillo->carbohidratos + $carbo,
+                        'totalProte' => $platillo->proteina + $proteinas,
+                        'totalGrasas' => $platillo->grasas + $lipidos
                     )));
                 }
                 else{

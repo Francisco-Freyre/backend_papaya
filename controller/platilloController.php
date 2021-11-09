@@ -73,7 +73,7 @@ if(isset($_POST)){
             if($edit){
                 echo "<script>";
                 echo "alert('Platillo editado correctamente');";
-                echo "window.location.replace('../platillos.php');";
+                echo "window.location.replace('../editar-platillo.php?id=".$_POST['id']."');";
                 echo "</script>";
             }
             else{
