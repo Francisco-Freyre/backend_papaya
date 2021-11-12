@@ -68,8 +68,8 @@ class platillos {
         }
     }
 
-    public function getPlaNombre($nombre, $kcal){
-        $sql = "SELECT * FROM platillos WHERE nombre = '$nombre' AND energia = '$kcal'";
+    public function getPlaNombre($nombre){
+        $sql = "SELECT * FROM platillos WHERE nombre = '$nombre'";
         $response = $this->db->query($sql);
         return $response;
     }
