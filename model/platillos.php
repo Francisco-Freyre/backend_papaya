@@ -71,7 +71,12 @@ class platillos {
     public function getPlaNombre($nombre){
         $sql = "SELECT * FROM platillos WHERE nombre = '$nombre'";
         $response = $this->db->query($sql);
-        return $response;
+        if($response->num_rows == 1){
+            return $response;
+        }
+        else{
+            return $this->db->error;
+        }
     }
 
     public function getIngredientes($id){
