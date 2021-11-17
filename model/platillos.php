@@ -80,6 +80,18 @@ class platillos {
     }
 
     public function getIngredientes($id){
+        $sql = "SELECT * FROM ingredientes2 WHERE platillo_id = $id";
+        $response = $this->db->query($sql);
+
+        if($response){
+            return $response;
+        }
+        else{
+            return $response;
+        }
+    }
+
+    public function getIngredientesDos($id){
         $sql = "SELECT DISTINCT ingredientes2.id, alimentos.nombre, alimentos.unidad, alimentos.cantidad FROM ingredientes2, alimentos WHERE ingredientes2.platillo_id = $id AND ingredientes2.alimento_id = alimentos.id";
         $response = $this->db->query($sql);
 

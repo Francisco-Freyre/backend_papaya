@@ -24,7 +24,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         if(isset($_GET['idPlatillo'])){
             $platillo = $_platillos->getPlatillo($_GET['idPlatillo']);
-            $ingredientes = $_platillos->getIngredientes($_GET['idPlatillo']);
+            $ingredientes = $_platillos->getIngredientesDos($_GET['idPlatillo']);
             if($platillo && $ingredientes){
                 $AIngredientes = [];
                 while($ingrediente = $ingredientes->fetch_object()){
