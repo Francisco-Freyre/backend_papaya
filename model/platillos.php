@@ -92,7 +92,7 @@ class platillos {
     }
 
     public function getIngredientesDos($id){
-        $sql = "SELECT DISTINCT ingredientes2.id, alimentos.nombre, alimentos.unidad, alimentos.cantidad FROM ingredientes2, alimentos WHERE ingredientes2.platillo_id = $id AND ingredientes2.alimento_id = alimentos.id";
+        $sql = "SELECT DISTINCT ingredientes2.id, ingredientes2.equivalente, alimentos.nombre, alimentos.unidad FROM ingredientes2, alimentos WHERE ingredientes2.platillo_id = $id AND ingredientes2.alimento_id = alimentos.id";
         $response = $this->db->query($sql);
 
         if($response){

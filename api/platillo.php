@@ -28,7 +28,57 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if($platillo && $ingredientes){
                 $AIngredientes = [];
                 while($ingrediente = $ingredientes->fetch_object()){
-                    $ingredient = $ingrediente->cantidad.' '.$ingrediente->unidad.' de '.$ingrediente->nombre;
+                    switch ($ingrediente->equivalente) {
+                        case '0.25':
+                            $cantidad = '1/4';
+                            break;
+                        case '0.3':
+                            $cantidad = '1/3';
+                            break;
+                        case '0.5':
+                            $cantidad = '1/2';
+                            break;
+                        case '0.6':
+                            $cantidad = '2/3';
+                            break;
+                        case '0.75':
+                            $cantidad = '3/4';
+                            break;
+                        case '1.25':
+                            $cantidad = '1 1/4';
+                            break;
+                        case '1.3':
+                            $cantidad = '1 1/3';
+                            break;
+                        case '1.5':
+                            $cantidad = '1 1/2';
+                            break;
+                        case '1.6':
+                            $cantidad = '1 2/3';
+                            break;
+                        case '1.75':
+                            $cantidad = '1 3/4';
+                            break;
+                        case '2.25':
+                            $cantidad = '2 1/4';
+                            break;
+                        case '2.3':
+                            $cantidad = '2 1/3';
+                            break;
+                        case '2.5':
+                            $cantidad = '2 1/2';
+                            break;
+                        case '2.6':
+                            $cantidad = '2 2/3';
+                            break;
+                        case '2.75':
+                            $cantidad = '2 3/4';
+                            break;
+                        default:
+                            $cantidad = $ingrediente->equivalente;
+                            break;
+                    }
+                    $ingredient = $cantidad.' '.$ingrediente->unidad.' de '.$ingrediente->nombre;
                     array_push($AIngredientes, $ingredient);
                 }
                 $plati = $platillo->fetch_object();
