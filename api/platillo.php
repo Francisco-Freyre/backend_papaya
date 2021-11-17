@@ -28,7 +28,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if($platillo && $ingredientes){
                 $AIngredientes = [];
                 while($ingrediente = $ingredientes->fetch_object()){
-                    array_push($AIngredientes, $ingrediente->nombre);
+                    $ingredient = $ingrediente->cantidad.' '.$ingrediente->unidad.' de '.$ingrediente->nombre;
+                    array_push($AIngredientes, $ingredient);
                 }
                 $plati = $platillo->fetch_object();
                 $response = array(
