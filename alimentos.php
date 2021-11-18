@@ -72,12 +72,12 @@ $categoria = $categorias->fetch_object();
                                     <option value="cda">Cda</option>
                                     <option value="ml">Ml</option>
                                     <option value="vaso">Vaso</option>
-                                    <option value="disparos">Disparos</option>
+                                    <option value="disparo">Disparos</option>
                                     <option value="pieza">Pieza</option>
                                     <option value="lata">Lata</option>
-                                    <option value="hojas">Hojas</option>
-                                    <option value="rebanadas">Rebanadas</option>
-                                    <option value="tarros">Tarro</option>
+                                    <option value="hoja">Hojas</option>
+                                    <option value="rebanada">Rebanadas</option>
+                                    <option value="tarro">Tarro</option>
                                     <option value="copa">Copa</option>
                                 </select>
                             </div>

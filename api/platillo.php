@@ -78,7 +78,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             $cantidad = $ingrediente->equivalente;
                             break;
                     }
-                    $ingredient = $cantidad.' '.$ingrediente->unidad.' de '.$ingrediente->nombre;
+                    $ese = '';
+                    if($ingrediente->equivalente > 1){
+                        $ese = 's';
+                    }
+                    $ingredient = $cantidad.' '.$ingrediente->unidad.$ese.' de '.$ingrediente->nombre;
                     array_push($AIngredientes, $ingredient);
                 }
                 $plati = $platillo->fetch_object();
