@@ -156,6 +156,36 @@ switch ($_SERVER['REQUEST_METHOD']) {
             }
         }
 
+        if(isset($_POST['apetito'])){
+            $formulario = $_formularios->getFormulario($_POST['idCliente']);
+            if(is_object($formulario)){
+                $apetito = $_formularios->updateApetito($_POST['id'], $_POST['apetito']);
+                if($apetito){
+                    die(json_encode(array(
+                        'resultado' => true
+                    )));
+                }
+                else{
+                    die(json_encode(array(
+                        'resultado' => false
+                    )));
+                }
+            }
+            else{
+                $apetito = $_formularios->insertApetito($_POST['id'], $_POST['apetito']);
+                if($apetito){
+                    die(json_encode(array(
+                        'resultado' => true
+                    )));
+                }
+                else{
+                    die(json_encode(array(
+                        'resultado' => false
+                    )));
+                }
+            }
+        }
+
         //Funciona
         if(isset($_POST['alcohol'])){
             $formulario = $_formularios->getFormulario($_POST['idCliente']);
@@ -402,7 +432,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         //Obtener lista de dietas
         if(isset($_GET['dietas'])){
-            $_dietas = $_form_result->dietas($_GET['dietas']);
+            $_dietas = $_form_result->dietasNueva($_GET['dietas']);
             if($_dietas->num_rows >= 1){
                 $lista = [];
                 while ($ids = $_dietas->fetch_object()) {

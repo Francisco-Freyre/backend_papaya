@@ -36,6 +36,18 @@ class formularios{
         return $response;
     }
 
+    public function insertApetito($id_cliente, $apetito){
+        $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente, 0.0, 0.0, '', '', '', '$apetito');";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function updateApetito($id_cliente, $apetito){
+        $sql = "UPDATE formularios SET apetito = '$apetito' WHERE id_cliente = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
     public function insertActividadFisica($id_cliente, $actividad){
         $sql = "INSERT INTO formularios VALUES(NULL, $id_cliente, '', '', '', '$actividad', '', '');";
         $response = $this->db->query($sql);

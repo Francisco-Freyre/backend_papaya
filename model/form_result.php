@@ -34,6 +34,11 @@ class form_result{
         return $response = $this->db->query($sql);
     }
 
+    public function dietasNueva($kcal){
+        $sql = "SELECT ABS($kcal - kcal) AS cercano, kcal, id FROM `dietas` WHERE categoria = 'PRUEBA' ORDER BY cercano ASC LIMIT 3";
+        return $response = $this->db->query($sql);
+    }
+
     public function dieta($id){
         $sql = "SELECT * FROM dietas WHERE id = $id";
         return $response = $this->db->query($sql);
