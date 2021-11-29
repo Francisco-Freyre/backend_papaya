@@ -338,7 +338,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     'meta' => $formulario->meta,
                     'pesoMeta' => $meta->peso,
                     'edad' => $client->edad,
-                    'sexo' => $client->sexo
+                    'sexo' => $client->sexo,
+                    'apetito' => $formulario->apetito
                 );
                 die(json_encode($response));
             }
