@@ -157,7 +157,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
 
         if(isset($_POST['apetito'])){
-            $formulario = $_formularios->getFormulario($_POST['idCliente']);
+            $formulario = $_formularios->getFormulario($_POST['id']);
             if(is_object($formulario)){
                 $apetito = $_formularios->updateApetito($_POST['id'], $_POST['apetito']);
                 if($apetito){
