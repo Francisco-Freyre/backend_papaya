@@ -17,7 +17,7 @@ class clientes{
         
         $result = false;
         if($save){
-            $result = true;
+            $result = $this->db->insert_id;
         }
         return $result;
     }

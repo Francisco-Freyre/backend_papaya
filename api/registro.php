@@ -9,10 +9,14 @@
             $_POST = json_decode(file_get_contents('php://input'), true);
             if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['estado']) && isset($_POST['email']) && isset($_POST['password'])){
                 $cliente = $_clientes->create($_POST['nombre'], $_POST['apellido'], $_POST['estado'], $_POST['email'], $_POST['password']);
-                if($cliente){
+                if($cliente != false){
+                    $clis = $_clientes->readOne($cliente);
+                    $cli = $clis->fetch_object();
                     $response = array(
                         'resultado' => 'exito',
-                        'msg' => 'El cliente fue creado de manera exitosa'
+                        'token' => 'sdjan1231',
+                        'nombre' => $cli->nombre,
+                        'userid' => $cli->id
                     );
                     die(json_encode($response));
                 }else{
