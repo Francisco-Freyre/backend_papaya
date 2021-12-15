@@ -38,4 +38,19 @@ if(isset($_POST)){
     }
 }
 
+    if(isset($_GET['accion'])){
+        if($_GET['accion'] == 'eliminar'){
+            $delete = $_dietas->deleteDieta($_GET['id']);
+            if($delete){
+                echo "<script>";
+                echo "alert('Dieta eliminada correctamente');";
+                echo "window.location.replace('../dietas.php');";
+                echo "</script>";
+            }
+            else{
+                echo 'Algo fallo, intente de nuevo';
+            }
+        }
+    }
+
 ?>

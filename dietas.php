@@ -50,7 +50,10 @@ $dietas = $_dietas->read();
                                     <td><?=$dieta->por_car.",".$dieta->por_pro.",".$dieta->por_gra?></td>
                                     <td><?=$dieta->categoria?></td>
                                     <td><?=$dieta->descripcion?></td>
-                                    <td> <a class="btn btn-warning" href="editar-dieta.php?id=<?=$dieta->id?>">Editar</a></td>
+                                    <td class="d-line"> 
+                                      <a class="btn btn-warning" href="editar-dieta.php?id=<?=$dieta->id?>">Editar</a>
+                                      <a class="btn btn-danger" href="controller/dietaController.php?accion=eliminar&id=<?=$dieta->id?>">Eliminar</a>
+                                    </td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

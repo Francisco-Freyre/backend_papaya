@@ -53,5 +53,11 @@ class dietas {
         $response = $this->db->query($sql);
         return $response; 
     }
+
+    public function deleteDieta($id){
+        $sql = "DELETE FROM dietas WHERE id = $id";
+        $response = $this->db->query($sql);
+        return $response; 
+    }
 }
 ?>
