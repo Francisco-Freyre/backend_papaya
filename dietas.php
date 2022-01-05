@@ -7,7 +7,16 @@ require_once 'config/db.php';
 $_dietas = new dietas();
 $dietas = $_dietas->read();
 ?>
-
+  <script type="text/javascript">
+    function ConfirmDelete(){
+      let respuesta = confirm('¿Estas seguro que deseas eliminar esta dieta?');
+      if(respuesta){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -52,7 +61,7 @@ $dietas = $_dietas->read();
                                     <td><?=$dieta->descripcion?></td>
                                     <td class="d-line"> 
                                       <a class="btn btn-warning" href="editar-dieta.php?id=<?=$dieta->id?>">Editar</a>
-                                      <a class="btn btn-danger" href="controller/dietaController.php?accion=eliminar&id=<?=$dieta->id?>">Eliminar</a>
+                                      <a class="btn btn-danger" href="controller/dietaController.php?accion=eliminar&id=<?=$dieta->id?>" onclick="return ConfirmDelete()" >Eliminar</a>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>

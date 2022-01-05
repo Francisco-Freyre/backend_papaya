@@ -48,18 +48,32 @@ class clientes{
         }
     }
 
-    public function update($id, $nombre, $apellidos, $edad, $sexo, $email, $password){
+    public function update($id, $nombre, $apellidos, $edad, $sexo, $email, $password, $estado, $img){
         if($password != ''){
             $opciones = array(
                 'cost' => 12
             );
             $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
-                      
-            return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', edad = $edad, sexo = '$sexo', email = '$email', password = '$password_hashed' WHERE id = $id");
+
+            if($img != ''){
+                return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', estado = '$estado' , edad = $edad, sexo = '$sexo', email = '$email', password = '$password_hashed', url_img = '$img' WHERE id = $id");
+            }
+            else{
+                return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', estado = '$estado' , edad = $edad, sexo = '$sexo', email = '$email', password = '$password_hashed' WHERE id = $id");
+            }
         }
         else{
-            return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', edad = $edad, sexo = '$sexo', email = '$email' WHERE id = $id");
+            if($img != ''){
+                return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', estado = '$estado' , edad = $edad, sexo = '$sexo', email = '$email', url_img = '$img' WHERE id = $id");
+            }
+            else{
+                return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', estado = '$estado' , edad = $edad, sexo = '$sexo', email = '$email' WHERE id = $id");
+            }
         }
+    }
+
+    public function updateImage($id, $image){
+        return $result = $this->db->query("UPDATE clientes SET url_img = '$image' WHERE id = $id");
     }
 
     // Funcion para eliminar un cliente, retorna el resultado de la consulta o falso
