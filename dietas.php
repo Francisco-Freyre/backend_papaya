@@ -47,6 +47,7 @@ $dietas = $_dietas->read();
                                 <th>% Nutrientes</th>
                                 <th>Categoria</th>
                                 <th>Descripcion</th>
+                                <th>ID</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -59,6 +60,7 @@ $dietas = $_dietas->read();
                                     <td><?=$dieta->por_car.",".$dieta->por_pro.",".$dieta->por_gra?></td>
                                     <td><?=$dieta->categoria?></td>
                                     <td><?=$dieta->descripcion?></td>
+                                    <td><?=$dieta->id?></td>
                                     <td class="d-line"> 
                                       <a class="btn btn-warning" href="editar-dieta.php?id=<?=$dieta->id?>">Editar</a>
                                       <a class="btn btn-danger" href="controller/dietaController.php?accion=eliminar&id=<?=$dieta->id?>" onclick="return ConfirmDelete()" >Eliminar</a>
