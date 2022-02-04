@@ -83,7 +83,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         $ese = 's';
                     }
                     $ingredient = $cantidad.' '.$ingrediente->unidad.$ese.' de '.$ingrediente->nombre;
-                    array_push($AIngredientes, $ingredient);
+                    array_push($AIngredientes, array(
+                        'ingrediente' => $ingredient,
+                        'cambiar' => $ingrediente->cambiar == 1 ? true : false
+                    ));
                 }
                 $plati = $platillo->fetch_object();
                 $response = array(
