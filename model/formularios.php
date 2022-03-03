@@ -140,6 +140,12 @@ class formularios{
         return $response;
     }
 
+    public function UpdatePeso($id_cliente, $peso){
+        $sql = "UPDATE formularios SET peso = '$peso' WHERE id_cliente = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
     public function InsertPesoMeta($id_cliente, $peso){
         $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente ,'$peso', 'meta', CURDATE());";
         $response = $this->db->query($sql);

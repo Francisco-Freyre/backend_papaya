@@ -93,18 +93,8 @@ class alimentos{
 
     // Hasta aqui las funciones de esta tabla
 
-    public function update($id, $nombre, $apellidos, $edad, $sexo, $email, $password){
-        if($password != ''){
-            $opciones = array(
-                'cost' => 12
-            );
-            $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
-                      
-            return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', edad = $edad, sexo = '$sexo', email = '$email', password = '$password_hashed' WHERE id = $id");
-        }
-        else{
-            return $result = $this->db->query("UPDATE clientes SET nombre = '$nombre', apellido = '$apellidos', edad = $edad, sexo = '$sexo', email = '$email' WHERE id = $id");
-        }
+    public function update($id, $nombre, $cantidad, $unidad){              
+        return $result = $this->db->query("UPDATE alimentos SET nombre = '$nombre', unidad = '$unidad', cantidad = $cantidad WHERE id = $id");
     }
 
     // Funcion para eliminar un ingrediente, retorna el resultado de la consulta o falso

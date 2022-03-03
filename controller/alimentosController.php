@@ -20,33 +20,16 @@ if(isset($_POST['accion'])){
     }
 
     if($_POST['accion'] == 'editar'){
-            if($_POST['password'] != ""){
-            $resultado = $clientes->update($_POST['id'], $_POST['nombre'], $_POST['apellidos'], $_POST['edad'], $_POST['sexo'], $_POST['email'], $_POST['password']);
-            if($resultado){
-                echo "<script>";
-                echo "alert('Cliente editado satisfactoriamente!!');";
-                echo "window.location.replace('../lista-clientes.php');";
-                echo "</script>";
-            }else{
-                echo "<script>";
-                echo "alert('Hubo un error, intente de nuevo');";
-                echo "window.location.replace('../lista-clientes.php');";
-                echo "</script>";
-            }
-        }
-        else{
-            $resultado = $clientes->update($_POST['id'], $_POST['nombre'], $_POST['apellidos'], $_POST['edad'], $_POST['sexo'], $_POST['email'], '');
-            if($resultado){
-                echo "<script>";
-                echo "alert('Cliente editado satisfactoriamente!!');";
-                echo "window.location.replace('../lista-clientes.php');";
-                echo "</script>";
-            }else{
-                echo "<script>";
-                echo "alert('Hubo un error, intente de nuevo');";
-                echo "window.location.replace('../lista-clientes.php');";
-                echo "</script>";
-            }
+        $update = $_alimentos->update($_POST['id'], $_POST['nombre'], $_POST['cantidad'], $_POST['unidad']);
+        if($update){
+            echo "<script>";
+            echo "alert('Alimento editado satisfactoriamente!!');";
+            echo "window.location.replace('../alimentos.php?id=".$_POST['id_categoria']."');";
+            echo "</script>";
+        }else{
+            echo "<script>";
+            echo "alert('Hubo un error, intente de nuevo');";
+            echo "</script>";
         }
     }
 }

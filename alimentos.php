@@ -124,7 +124,10 @@ $categoria = $categorias->fetch_object();
                                                 <td><?=$alimento->nombre?></td>
                                                 <td><?=$alimento->unidad?></td>
                                                 <td><?=$alimento->cantidad?></td>
-                                                <td> <a class="btn btn-danger" href="controller/alimentosController.php?accion=borrar&cat=<?=$_GET['id']?>&id=<?=$alimento->id?>" onclick="return ConfirmDelete()">Eliminar</a></td>
+                                                <td> 
+                                                  <a class="btn btn-warning" href="alimentos-edit.php?id=<?=$alimento->id?>">Editar</a>
+                                                  <a class="btn btn-danger" href="controller/alimentosController.php?accion=borrar&cat=<?=$_GET['id']?>&id=<?=$alimento->id?>" onclick="return ConfirmDelete()">Eliminar</a>
+                                                </td>
                                             </tr>
                                         <?php endwhile; ?>
                                     </tbody>

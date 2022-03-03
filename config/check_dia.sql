@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 29-11-2021 a las 19:10:13
+-- Tiempo de generación: 03-03-2022 a las 20:43:14
 -- Versión del servidor: 5.7.34
 -- Versión de PHP: 7.4.21
 
@@ -24,50 +24,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `formularios`
+-- Estructura de tabla para la tabla `check_dia`
 --
 
-CREATE TABLE `formularios` (
+CREATE TABLE `check_dia` (
   `id` int(11) NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `altura` float(10,2) NOT NULL,
-  `peso` float(10,2) NOT NULL,
-  `meta` varchar(100) NOT NULL,
-  `actividad_fisica` varchar(100) NOT NULL,
-  `alcohol` varchar(100) NOT NULL,
-  `apetito` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `cliente_id` int(11) NOT NULL,
+  `fecha` varchar(255) NOT NULL,
+  `check1` int(1) NOT NULL,
+  `check2` int(1) NOT NULL,
+  `check3` int(1) NOT NULL,
+  `check4` int(1) NOT NULL,
+  `check5` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `formularios`
+-- Indices de la tabla `check_dia`
 --
-ALTER TABLE `formularios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cliente` (`id_cliente`);
+ALTER TABLE `check_dia`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `formularios`
+-- AUTO_INCREMENT de la tabla `check_dia`
 --
-ALTER TABLE `formularios`
+ALTER TABLE `check_dia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `formularios`
---
-ALTER TABLE `formularios`
-  ADD CONSTRAINT `formularios_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

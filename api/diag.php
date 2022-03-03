@@ -300,6 +300,30 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 die(json_encode($response));
             }
         }
+
+        if(isset($_POST['avance'])){
+            $formulario = $_formularios->getFormulario($_POST['idCliente']);
+            if(is_object($formulario)){
+                $meta = $_formularios->UpdatePeso($_POST['idCliente'], $_POST['avance']);
+                $inicial = $_formularios->InsertPesoInicial($_POST['idCliente'], 'avance', $_POST['avance']);
+                if($meta && $inicial){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
+                }else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
+            }else{
+                $response = array(
+                    'resultado' => false
+                );
+                die(json_encode($response));
+            }
+        }
         break;
 
     case 'GET':
