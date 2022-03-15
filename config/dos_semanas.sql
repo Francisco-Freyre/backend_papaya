@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 03-03-2022 a las 20:43:14
+-- Tiempo de generación: 10-03-2022 a las 22:57:11
 -- Versión del servidor: 5.7.34
 -- Versión de PHP: 7.4.21
 
@@ -24,18 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `check_dia`
+-- Estructura de tabla para la tabla `dos_semanas`
 --
 
-CREATE TABLE `check_dia` (
+CREATE TABLE `dos_semanas` (
   `id` int(11) NOT NULL,
   `cliente_id` int(11) NOT NULL,
-  `fecha` varchar(255) NOT NULL,
-  `check1` int(1) NOT NULL,
-  `check2` int(1) NOT NULL,
-  `check3` int(1) NOT NULL,
-  `check4` int(1) NOT NULL,
-  `check5` int(1) NOT NULL
+  `d1` int(11) NOT NULL,
+  `d2` int(11) NOT NULL,
+  `d3` int(11) NOT NULL,
+  `d4` int(11) NOT NULL,
+  `d5` int(11) NOT NULL,
+  `d6` int(11) NOT NULL,
+  `d7` int(11) NOT NULL,
+  `d8` int(11) NOT NULL,
+  `d9` int(11) NOT NULL,
+  `d10` int(11) NOT NULL,
+  `d11` int(11) NOT NULL,
+  `d12` int(11) NOT NULL,
+  `dia_final` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,9 +50,9 @@ CREATE TABLE `check_dia` (
 --
 
 --
--- Indices de la tabla `check_dia`
+-- Indices de la tabla `dos_semanas`
 --
-ALTER TABLE `check_dia`
+ALTER TABLE `dos_semanas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -53,9 +60,9 @@ ALTER TABLE `check_dia`
 --
 
 --
--- AUTO_INCREMENT de la tabla `check_dia`
+-- AUTO_INCREMENT de la tabla `dos_semanas`
 --
-ALTER TABLE `check_dia`
+ALTER TABLE `dos_semanas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
