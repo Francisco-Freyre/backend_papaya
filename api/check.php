@@ -2,10 +2,14 @@
 require_once '../model/check_dia.php';
 require_once '../model/dias.php';
 require_once '../model/dos_semanas.php';
+require_once '../model/formularios.php';
+require_once '../model/pesos.php';
 require_once '../config/db.php';
 $_check_dia = new check_dia();
 $_dias = new dias();
 $_dos_semanas = new dos_semanas();
+$_pesos = new pesos();
+$_formularios = new formularios();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         if(isset($_GET['checks'])){
@@ -52,6 +56,25 @@ switch ($_SERVER['REQUEST_METHOD']) {
                             die(json_encode($response));
                         }
                     }
+                }
+            }
+        }
+
+        if(isset($_GET['DosSemanas'])){
+            if($_GET['DosSemanas'] == 1){
+                $getSemanas = $_dos_semanas->Get($_GET['id_cliente']);
+                $getPesos = $_pesos->GetPesos($_GET['id_cliente']);
+                if($getSemanas && $getPesos){
+                    $APesos = [];
+                    while ($peso = $getPesos->fetch_object()) {
+                        array_push($APesos, $peso);
+                    }
+                    $response = array(
+                        'resultado' => true,
+                        'semanas' => $getSemanas->fetch_object(),
+                        'pesos' => $APesos
+                    );
+                    die(json_encode($response));
                 }
             }
         }
@@ -193,6 +216,26 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     'resultado' => true
                 );
                 die(json_encode($response));
+            }
+        }
+
+        if(isset($_POST['avance'])){
+            if($_POST['avance'] == true){
+                $insertPeso = $_pesos->insertPesoContinuo($_POST['peso'], $_POST['cliente_id']);
+                $updateFormulario = $_formularios->UpdatePeso($_POST['cliente_id'], $_POST['peso']);
+                if($insertPeso && $updateFormulario){
+                    $getFormulario = $_formularios->getFormulario($_POST['cliente_id']);
+                    $response = array(
+                        'resultado' => true,
+                        'formulario' => $getFormulario
+                    );
+                    die(json_encode($response));
+                }else{
+                    $response = array(
+                        'resultado' => false
+                    );
+                    die(json_encode($response));
+                }
             }
         }
         break;

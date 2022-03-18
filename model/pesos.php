@@ -6,6 +6,12 @@ class pesos{
         $this->db = Database::connect();
     }
 
+    public function GetPesos($id_cliente){
+        $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
     //Funcion para obtener el ultimo peso actualizado
     public function pesoContinuo($id_cliente){
         $sql = "SELECT * FROM pesos WHERE tipo = 'continuo' AND id_cliente = $id_cliente ORDER BY fecha DESC LIMIT 1";
@@ -77,6 +83,12 @@ class pesos{
 
     public function insertPesoContinuo($peso, $id_cliente){
         $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente, '$peso', 'continuo', CURDATE());";
+        $response = $this->db->query($sql);
+        return $response;
+    }
+
+    public function insertPesoContinuo2($peso, $id_cliente, $fecha){
+        $sql = "INSERT INTO pesos VALUES(NULL, $id_cliente, '$peso', 'continuo', '$fecha');";
         $response = $this->db->query($sql);
         return $response;
     }
