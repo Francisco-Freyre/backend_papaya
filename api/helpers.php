@@ -54,6 +54,18 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
             }
         }
+
+        if(isset($_POST['pesosDelete'])){
+            if($_POST['pesosDelete'] == true){
+                $delete = $_pesos->DeletePeso($_POST['id']);
+                if($delete){
+                    $response = array(
+                        'resultado' => true
+                    );
+                    die(json_encode($response));
+                }
+            }
+        }
         break;
 }
 ?>

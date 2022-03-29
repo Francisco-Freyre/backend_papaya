@@ -92,5 +92,11 @@ class pesos{
         $response = $this->db->query($sql);
         return $response;
     }
+
+    public function DeletePeso($id){
+        $sql = "DELETE FROM pesos WHERE id = $id;";
+        $response = $this->db->query($sql);
+        return $response;
+    }
 }
 ?>
