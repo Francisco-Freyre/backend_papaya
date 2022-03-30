@@ -182,6 +182,11 @@ class formularios{
         return $response = $this->db->query($sql);
     }
 
+    public function getPeso($id_cliente){
+        $sql = "SELECT * FROM pesos WHERE id_cliente = $id_cliente AND tipo != 'meta' ORDER BY id DESC LIMIT 1";
+        return $response = $this->db->query($sql);
+    }
+
     public function getForm_Result($idCliente){
         $sql = "SELECT * FROM form_result WHERE cliente_id = $idCliente";
         return $response = $this->db->query($sql);

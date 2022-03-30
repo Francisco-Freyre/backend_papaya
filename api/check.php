@@ -232,12 +232,15 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         if(isset($_POST['avance'])){
             if($_POST['avance'] == true){
+                $ultimoPeso = $_formularios->getPeso($_POST['cliente_id']);
                 $insertPeso = $_pesos->insertPesoContinuo($_POST['peso'], $_POST['cliente_id']);
                 $updateFormulario = $_formularios->UpdatePeso($_POST['cliente_id'], $_POST['peso']);
                 if($insertPeso && $updateFormulario){
+                    $pesos = $ultimoPeso->fetch_object();
                     $getFormulario = $_formularios->getFormulario($_POST['cliente_id']);
                     $response = array(
                         'resultado' => true,
+                        'ultimoPeso' => $pesos->peso,
                         'formulario' => $getFormulario
                     );
                     die(json_encode($response));
