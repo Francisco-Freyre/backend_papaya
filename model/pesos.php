@@ -12,6 +12,11 @@ class pesos{
         return $response;
     }
 
+    public function GetPesosSinMeta($id_cliente){
+        $sql = "SELECT * FROM pesos WHERE tipo != 'meta' AND id_cliente = $id_cliente ORDER BY fecha DESC LIMIT 4";
+        return $response = $this->db->query($sql);
+    }
+
     //Funcion para obtener el ultimo peso actualizado
     public function pesoContinuo($id_cliente){
         $sql = "SELECT * FROM pesos WHERE tipo = 'continuo' AND id_cliente = $id_cliente ORDER BY fecha DESC LIMIT 1";

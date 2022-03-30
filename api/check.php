@@ -63,14 +63,25 @@ switch ($_SERVER['REQUEST_METHOD']) {
         if(isset($_GET['DosSemanas'])){
             if($_GET['DosSemanas'] == 1){
                 $getSemanas = $_dos_semanas->Get($_GET['id_cliente']);
-                $getPesos = $_pesos->GetPesos($_GET['id_cliente']);
+                $getPesos = $_pesos->GetPesosSinMeta($_GET['id_cliente']);
                 if($getSemanas && $getPesos){
+                    $loop = 1;
+                    $resultados = $getPesos->num_rows;
                     $APesos = [];
                     while ($peso = $getPesos->fetch_object()) {
                         array_push($APesos, $peso);
+                        if($loop == 1){
+                            $pesoBajo = $peso->peso;
+                        }
+                        if($loop == $resultados){
+                            $pesoAlto = $peso->peso;
+                        }
+                        $loop++;
                     }
                     $response = array(
                         'resultado' => true,
+                        'pesoBajo' => $pesoBajo,
+                        'pesoAlto' => $pesoAlto,
                         'semanas' => $getSemanas->fetch_object(),
                         'pesos' => $APesos
                     );
