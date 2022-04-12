@@ -59,8 +59,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 }
                 else{
                     $response = array(
-                        'resultado' => false,
-                        'checks' => []
+                        'resultado' => false
                     );
                     die(json_encode($response));
                 }
