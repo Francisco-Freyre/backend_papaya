@@ -57,6 +57,13 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         }
                     }
                 }
+                else{
+                    $response = array(
+                        'resultado' => false,
+                        'checks' => []
+                    );
+                    die(json_encode($response));
+                }
             }
         }
 
