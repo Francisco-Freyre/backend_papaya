@@ -3,6 +3,7 @@ require_once '../model/check_dia.php';
 require_once '../model/dias.php';
 require_once '../model/dos_semanas.php';
 require_once '../model/formularios.php';
+require_once '../model/form_result.php';
 require_once '../model/pesos.php';
 require_once '../config/db.php';
 $_check_dia = new check_dia();
@@ -10,6 +11,7 @@ $_dias = new dias();
 $_dos_semanas = new dos_semanas();
 $_pesos = new pesos();
 $_formularios = new formularios();
+$_form_result = new form_result();
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         if(isset($_GET['pesosGet'])){
@@ -23,6 +25,45 @@ switch ($_SERVER['REQUEST_METHOD']) {
                     $response = array(
                         'resultado' => true,
                         'pesos' => $APesos
+                    );
+                    die(json_encode($response));
+                }
+            }
+        }
+
+        if(isset($_GET['continuar'])){
+            if($_GET['continuar'] == 1){
+                $getSemanas = $_dos_semanas->Get($_GET['cliente_id']);
+                if($getSemanas->num_rows > 0){
+                    $getChecks = $_check_dia->get($_GET['cliente_id']);
+                    if($getChecks->num_rows > 0){
+                        $getForm = $_form_result->read($_GET['cliente_id']);
+                        if($getForm->num_rows > 0){
+                            $response = array(
+                                'resultado' => true
+                            );
+                            die(json_encode($response));
+                        }
+                        else{
+                            $response = array(
+                                'resultado' => false,
+                                'msg' => 'No tiene dieta'
+                            );
+                            die(json_encode($response));
+                        }
+                    }
+                    else{
+                        $response = array(
+                            'resultado' => false,
+                            'msg' => 'No tiene checks'
+                        );
+                        die(json_encode($response));
+                    }
+                }
+                else{
+                    $response = array(
+                        'resultado' => false,
+                        'msg' => 'No tiene semanas'
                     );
                     die(json_encode($response));
                 }
