@@ -3,13 +3,17 @@ require_once '../model/check_dia.php';
 require_once '../model/dias.php';
 require_once '../model/dos_semanas.php';
 require_once '../model/formularios.php';
+require_once '../model/form_result.php';
 require_once '../model/pesos.php';
 require_once '../config/db.php';
+
 $_check_dia = new check_dia();
 $_dias = new dias();
 $_dos_semanas = new dos_semanas();
 $_pesos = new pesos();
 $_formularios = new formularios();
+$_form_result = new form_result();
+
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         if(isset($_GET['checks'])){
@@ -70,10 +74,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
             if($_GET['DosSemanas'] == 1){
                 $getSemanas = $_dos_semanas->Get($_GET['id_cliente']);
                 $getPesos = $_pesos->GetPesosSinMeta($_GET['id_cliente']);
+                $getKcal = $_form_result->read($_GET['id_cliente']);
                 if($getSemanas && $getPesos){
                     $loop = 1;
                     $resultados = $getPesos->num_rows;
                     $APesos = [];
+                    $kcal = $getKcal->fetch_object();
                     while ($peso = $getPesos->fetch_object()) {
                         array_push($APesos, $peso);
                         if($loop == 1){
@@ -88,6 +94,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
                         'resultado' => true,
                         'pesoBajo' => $pesoBajo,
                         'pesoAlto' => $pesoAlto,
+                        'kcal' => $kcal->kcal.' Kcal',
                         'semanas' => $getSemanas->fetch_object(),
                         'pesos' => $APesos
                     );
